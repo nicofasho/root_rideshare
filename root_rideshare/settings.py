@@ -77,10 +77,9 @@ WSGI_APPLICATION = 'root_rideshare.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-# IS_WINDOWS = os.environ['WINDOWS']
-IS_WINDOWS = False
+IS_WINDOWS = os.environ['WINDOWS']
 
-if IS_WINDOWS:
+if IS_WINDOWS == 'TRUE':
     DB = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
