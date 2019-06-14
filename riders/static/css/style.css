@@ -1,0 +1,121 @@
+:root {
+    --green: #047c48;
+    --white: #ffffff;
+    --light-yellow: #f6f7e1;
+    --lightest-yellow: #f6f7e167;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color:  var(--lightest-yellow);
+    font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+
+.forgot-password {
+    text-align: left;
+    font-size: 11px;
+}
+
+.sign-up {
+    color: black;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 35px;
+}
+
+.md .sign-up a{
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.button.login-button {
+    background: #292929!important;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+
+.login-card p {
+    text-align: center;
+    font-weight: 700;
+}
+
+.login-card {
+    background-color:  var(--white);
+    padding: 50px 15px 50px 15px;
+    margin: 60px 30px 0px;
+}
+
+#login-page {
+    background-image: url(assets/road.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+  }
+
+.container {
+    flex: 1 0 auto;
+}
+
+footer.page-footer {
+    padding-top: 0;
+    background-color: var(--green);
+}
+
+nav {
+    background-color: var(--green);
+}
+
+.animation {
+    text-align: center;
+    color: white;
+    background-color: var(--green);
+    height: 100vh;
+    padding-top: 30vh;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.car {
+    filter: drop-shadow(0 1mm 3mm var(--light-yellow));
+    animation: shake 0.2s ease-in-out infinite alternate;
+}
+
+.car_line {
+    transform-origin: center right;
+    stroke-dasharray: 22;
+    animation: line 0.8s ease-in-out infinite;
+}
+
+.car_line_top {
+    animation-delay: -0.2s;
+}
+
+
+@keyframes shake {
+    0% {
+        transform: translateY(-1%);
+    }
+    100% {
+        transform: translateY(3%);
+    }
+}
+
+@keyframes line {
+    0% {
+        stroke-dashoffset: 22;
+    }
+    25% {
+        stroke-dashoffset: 22;
+    }
+    50% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: -22;
+    }
+}

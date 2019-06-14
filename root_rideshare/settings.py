@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ
+
+environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -73,13 +77,28 @@ WSGI_APPLICATION = 'root_rideshare.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+# IS_WINDOWS = os.environ['WINDOWS']
+IS_WINDOWS = False
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if IS_WINDOWS:
+    DB = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'rootdb',
+            'USER': 'postgres',
+            'PASSWORD': 'brocks',
+            'HOST': '127.0.0.1',
+        }
     }
-}
+else:
+    DB = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'rootdb',
+        }
+    }
+
+DATABASES = DB
 
 
 # Password validation
