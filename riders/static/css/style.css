@@ -9,11 +9,18 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color:  var(--lightest-yellow);
+    background-color:  var(--white);
     font-family: 'Source Sans Pro', sans-serif;
-
 }
 
+.background .teal-text {
+    margin-left: 10px;
+}
+
+.background img {
+    margin-left: 10px;
+    margin-top: 10px
+}
 
 .forgot-password {
     text-align: left;
@@ -75,6 +82,8 @@ nav {
     color: white;
     background-color: var(--green);
     height: 100vh;
+    position: fixed;
+    z-index: 1000 !important;
     padding-top: 30vh;
     font-family: 'Open Sans Condensed', sans-serif;
     font-family: 'Source Sans Pro', sans-serif;
