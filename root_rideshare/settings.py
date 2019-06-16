@@ -29,7 +29,8 @@ SECRET_KEY = 'ultu^z=^8%9k5g0(tx+xk5r7#9(38p49i20vtbyg740^*sc_gi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# TODO: change back to allowed_hosts = [] before deployment
+ALLOWED_HOSTS = ['192.168.205.126']
 
 
 # Application definition
@@ -79,23 +80,12 @@ WSGI_APPLICATION = 'root_rideshare.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 IS_WINDOWS = os.environ['WINDOWS']
 
-if IS_WINDOWS == 'TRUE':
-    DB = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'rootdb',
-            'USER': 'postgres',
-            'PASSWORD': 'brocks',
-            'HOST': '127.0.0.1',
-        }
+DB = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'rootdb',
     }
-else:
-    DB = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'rootdb',
-        }
-    }
+}
 
 DATABASES = DB
 
@@ -137,3 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Added login and logout redirect URL
+LOGIN_REDIRECT_URL = '/riders'
+LOGOUT_REDIRECT_URL = '/'

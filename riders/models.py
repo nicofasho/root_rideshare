@@ -4,6 +4,10 @@ from datetime import date
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+# imports for profile creation
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 # Created models
 
@@ -41,8 +45,17 @@ class Profile(models.Model):
 
     # override __str__ method
     def __str__(self):
-        u = User.objects.get(pk=self.user)
-        return f'{u.username}'
+        return self.user.username
+
+    #methods to tie profile creation to when users are created
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
 
 
 class Route(models.Model):

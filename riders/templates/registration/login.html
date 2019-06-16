@@ -4,4 +4,11 @@
 
 <h1>Login page </h1>
 
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="next" value="{{ next }}">
+    <button>Login</button>
+</form>
+
 {% endblock %}

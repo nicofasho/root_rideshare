@@ -45,7 +45,14 @@
                     <li><a a class="dropdown-button" data-beloworigin="true" data-hover="true"
                             data-constrainwidth="false" href="#!" data-activates="dropdown1">Your Commute</a></li>
                     <li><a href="#">About Us</a></li>
-                    <li><a href="#">Sign out</a></li>
+                    
+                    <!-- Christian here, adding logic for sign in, sign out switch based on login status -->
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Sign Out</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">Sign In</a></li>
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    {% endif %}
                 </ul>
                 <ul id="mobile-demo" class="side-nav">
                     <li class="no-padding">
