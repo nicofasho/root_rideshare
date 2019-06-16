@@ -30,7 +30,8 @@ SECRET_KEY = 'ultu^z=^8%9k5g0(tx+xk5r7#9(38p49i20vtbyg740^*sc_gi'
 DEBUG = True
 
 # TODO: change back to allowed_hosts = [] before deployment
-ALLOWED_HOSTS = ['192.168.205.126']
+ALLOWED_HOSTS = ['localhost', '192.168.205.126']
+
 
 
 # Application definition

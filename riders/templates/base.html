@@ -42,18 +42,17 @@
                     class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="left hide-on-med-and-down">
                     <li class="active"><a href="/">Home</a></li>
+                    {% if user.is_authenticated %}
                     <li><a a class="dropdown-button" data-beloworigin="true" data-hover="true"
                             data-constrainwidth="false" href="#!" data-activates="dropdown1">Your Commute</a></li>
-                    <li><a href="#">About Us</a></li>
-                    
-                    <!-- Christian here, adding logic for sign in, sign out switch based on login status -->
-                    {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}">Sign Out</a></li>
                     {% else %}
+                    <li><a href="#">About Us</a></li>
                     <li><a href="{% url 'login' %}">Sign In</a></li>
                     <li><a href="{% url 'signup' %}">Sign Up</a></li>
                     {% endif %}
                 </ul>
+                {% if user.is_authenticated %}
                 <ul id="mobile-demo" class="side-nav">
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
@@ -62,8 +61,8 @@
                                     <div class="background teal lighten-4">
                                         <img width="50px" alt="" class="circle responsive-img valign profile-image"
                                             src="https://bit.ly/fcc-running-cats">
-                                        <span class="name teal-text">Jane Doe</span>
-                                        <span class="email teal-text">janesemail@gmail.com</span>
+                                        <span class="name teal-text">{{ user.username }}</span><br>
+                                        <span class="email teal-text">sample-email@gmail.com</span>
                                     </div>
                             </div>
                     </li>
@@ -79,14 +78,26 @@
                         </div>
                     </li>
                     <li class="bold"><a href="" class="waves-effect waves-teal">About Us</a></li>
-                    <li class="bold"><a href="" class="waves-effect waves-teal">Sign Out</a></li>
+                    <li class="bold"><a href="{% url 'logout' %}" class="waves-effect waves-teal">Sign Out</a></li>
                 </ul>
                 </li>
                 </ul>
             </div>
         </nav>
     </div>
+    {% else %}
+    <ul id="mobile-demo" class="side-nav">
+        <li class="bold"><a href="{% url 'login' %}" class="waves-effect waves-teal">Log In</a></li>
+        <li class="bold"><a href="{% url 'signup' %}" class="waves-effect waves-teal">Sign Up</a></li>
+        <li class="bold"><a href="" class="waves-effect waves-teal">About Us</a></li>
+    </ul>
+    </li>
+    </ul>
+</div>
+</nav>
+</div>
 
+    {% endif %}
 
     <main class="container">
         {% block content %}
