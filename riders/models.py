@@ -48,7 +48,7 @@ class Profile(models.Model):
 class Route(models.Model):
     departureLocation = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='departure')
     arrivalLocation = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='arrival')
-    users = models.ManyToManyField(Profile)
+    # users = models.ManyToManyField(Profile)
     name = models.CharField(max_length=100)
     # not sure about departureTime, since this is gonna be the same
     # time for 5 days a week, seems weird to use actual time
