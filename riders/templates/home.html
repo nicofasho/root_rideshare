@@ -1,8 +1,109 @@
-{% extends 'base.html' %}
+{% load static %}
 
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
 
-<h1>Welcome to ROOT!</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ROOT</title>
+    <link href="{% static 'assets/favicon.ico' %}" rel="shortcut icon" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300%7CSource+Sans+Pro&display=swap"
+        rel="stylesheet">
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <!-- Internal main stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- Latest jQuery -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- Internal main JavaScript functions -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.carousel').carousel(
+                {
+                    dist: 0,
+                    padding: 0,
+                    fullWidth: true,
+                    indicators: true,
+                    duration: 300,
+                }
+            );
+        });
+        autoplay()
+        function autoplay() {
+            $('.carousel').carousel('next');
+            setTimeout(autoplay, 4500);
+        }
+    </script>
 
+</head>
 
-{% endblock %}
+<body>
+    <nav class="navbar-fixed">
+        </ul>
+        <div class="nav-wrapper"> <a class="brand-logo center"> <img alt="ROOT" src="{% static 'assets/logo.png' %}"
+                    width="100"></a>
+            <ul class="left hide-on-med-and-down">
+                <li class="active"><a href="/">Home</a></li>
+                {% if user.is_authenticated %}
+                <li><a a class="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
+                        href="#!" data-activates="dropdown1">Your Commute</a></li>
+                <li><a href="{% url 'logout' %}">Sign Out</a></li>
+                {% else %}
+                <li><a href="#">About Us</a></li>
+                <li><a href="{% url 'login' %}">Sign In</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <section class="carousel carousel-slider center">
+        <div class="carousel-fixed-item center">
+            <a href="{% url 'login' %}" class="btn waves-effect">Log in</a>
+            <a href="{% url 'signup' %}" class="btn waves-effect">Sign Up</a></li>
+        </div>
+        <div class="carousel-item green white-text">
+            <h2>First Panel</h2>
+            <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tellus mi,
+                fermentum id bibendum at, semper quis ex. Morbi et enim vel massa malesuada imperdiet nec quis
+                augue. Nullam et eleifend nisi. Integer vitae bibendum urna, sit amet iaculis nisl. Ut ullamcorper
+                nibh nec quam mollis maximus. Donec justo enim, efficitur ut libero vel, interdum rhoncus diam.
+                Suspendisse suscipit lacus volutpat, gravida augue nec, sodales lectus. Nam eget sollicitudin nulla.
+                Quisque congue sit amet dui sed efficitur. Donec tempus mauris auctor leo vulputate accumsan quis in
+                orci.</p>
+        </div>
+        <div class="carousel-item brown white-text">
+            <h2>Second Panel</h2>
+            <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tellus mi,
+                fermentum id bibendum at, semper quis ex. Morbi et enim vel massa malesuada imperdiet nec quis
+                augue. Nullam et eleifend nisi. Integer vitae bibendum urna, sit amet iaculis nisl. Ut ullamcorper
+                nibh nec quam mollis maximus. Donec justo enim, efficitur ut libero vel, interdum rhoncus diam.
+                Suspendisse suscipit lacus volutpat, gravida augue nec, sodales lectus. Nam eget sollicitudin nulla.
+                Quisque congue sit amet dui sed efficitur. Donec tempus mauris auctor leo vulputate accumsan quis in
+                orci.</p>
+        </div>
+        <div class="carousel-item teal white-text">
+            <h2>Third Panel</h2>
+            <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tellus mi,
+                fermentum id bibendum at, semper quis ex. Morbi et enim vel massa malesuada imperdiet nec quis
+                augue. Nullam et eleifend nisi. Integer vitae bibendum urna, sit amet iaculis nisl. Ut ullamcorper
+                nibh nec quam mollis maximus. Donec justo enim, efficitur ut libero vel, interdum rhoncus diam.
+                Suspendisse suscipit lacus volutpat, gravida augue nec, sodales lectus. Nam eget sollicitudin nulla.
+                Quisque congue sit amet dui sed efficitur. Donec tempus mauris auctor leo vulputate accumsan quis in
+                orci.</p>
+        </div>
+    </section>
+
+    <div class="section white">
+        <div class="row container">
+            <h1>Dramatically improve your commute</h1>
+        </div>
+    </div>

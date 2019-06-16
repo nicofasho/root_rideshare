@@ -137,3 +137,19 @@ nav {
     color: var(--green);
 }
 
+.carousel-item{
+    height:10vh;
+}
+.carousel {
+    height:10vh;
+    /* margin-bottom: 85px; */
+}
+.carousel a {
+    margin-bottom: 30px;
+    float: center;
+}
+
+.carousel.carousel-slider .carousel-fixed-item.with-indicators {
+    margin: 0px;
+    padding: 0px;
+}
