@@ -3,8 +3,10 @@
 {% block content %}
 
 <h1>Index to ROOT!</h1>
-    <!-- bouncing car animation from static js file (this can be moved anywhere in the body of the html file) -->
-    <div class="animation">
+
+
+<!-- Don't delete!! bouncing car animation from static js file (this can be moved anywhere in the body of the html file) -->
+<!-- <div class="animation">
         <br>
         <svg class="car" width="102" height="50">
             <g transform="translate(2 1)" stroke="white" fill="none" stroke-linejoin="round">
@@ -20,10 +22,33 @@
             </g>
         </svg>
         <h2>ROOT is finding you the perfect ride.</h2>
-    </div>
-        <!-- end bouncing car animation -->
+    </div> -->
+<!-- end bouncing car animation -->
 
-    <h1>Text after the animation...</h1>
+{% if routes.count %}
+{% for route in routes %}
+<a href="">
+    <div class="card">
+        <div class="card-content center-align">
+            <span class="card-title">{{ route.name }}</span>
+            <p> <i class="material-icons">
+                    home
+                </i>{{ route.departureLocation }} <i class="material-icons">
+                    arrow_forward_ios
+                </i> <i class="material-icons">
+                    work
+                </i> {{ route.arrivalLocation }}</p>
+            <p>Leaving at {{ route.departureTime }}.</p>
+            <br>
+            <a class="waves-effect waves-light btn" href="">Reschedule</a>
+        </div>
+    </div>
+</a>
+{% endfor %}
+{% else %}
+<h5>No routes added yet. Add one here...</h5>
+{% endif %}
+
 </body>
 
 
