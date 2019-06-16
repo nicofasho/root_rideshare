@@ -128,3 +128,7 @@ nav {
         stroke-dashoffset: -22;
     }
 }
+
+.card-title {
+    color: var(--green);
+}
