@@ -2,8 +2,6 @@
 
 {% block content %}
 
-<h1>Index to ROOT!</h1>
-
 
 <!-- Don't delete!! bouncing car animation from static js file (this can be moved anywhere in the body of the html file) -->
 <!-- <div class="animation">
@@ -27,6 +25,7 @@
 
 {% if routes.count %}
 {% for route in routes %}
+<br>
 <a href="">
     <div class="card">
         <div class="card-content center-align">
@@ -40,19 +39,23 @@
                 </i> {{ route.arrivalLocation }}</p>
             <p>Leaving at {{ route.departureTime }}.</p>
             <br>
-            <a class="waves-effect waves-light btn" href="">Reschedule</a>
-            <a class="waves-effect waves-light btn" href="">Route Detail</a>
+            <!-- <a class="waves-effect waves-light btn" href="{% url 'route_detail' route.id %}">Reschedule</a> -->
+            <a class="waves-effect waves-light btn" href="{% url 'route_detail' route.id %}">Route Detail</a>
         </div>
     </div>
 </a>
 {% endfor %}
 {% else %}
-<h5>No routes added yet. Add one here...</h5>
+<br><br><br>
+<a href="{% url 'route_create' %}">
+    <div class="card">
+        <div class="card-content center-align">
+            <h3>Say hello to the express lane. </h3>
+            <h5>A better commute is simply a click away.</h5>
+            <h5 class="waves-effect waves-light btn">Upgrade your commute.</h5>
+        </div>
+    </div>
+</a>
 {% endif %}
-
-</body>
-
-
-
 
 {% endblock %}
