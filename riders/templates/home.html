@@ -41,34 +41,42 @@
             $('.carousel').carousel('next');
             setTimeout(autoplay, 4500);
         }
+
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("#main").removeClass("is-loading");
+            }, 100)
+        });
     </script>
 
 </head>
 
 <body>
+
     <nav class="navbar-fixed">
-        </ul>
         <div class="nav-wrapper"> <a class="brand-logo center"> <img alt="ROOT" src="{% static 'assets/logo.png' %}"
                     width="100"></a>
-            <ul class="left hide-on-med-and-down">
-                <li class="active"><a href="/">Home</a></li>
+            <ul class="left">
+
                 {% if user.is_authenticated %}
-                <li><a a class="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
-                        href="#!" data-activates="dropdown1">Your Commute</a></li>
-                <li><a href="{% url 'logout' %}">Sign Out</a></li>
+                <li><a data-beloworigin="true" data-hover="true" data-constrainwidth="false"
+                        href="{% url 'riders_index' %}">View Your Commute</a></li>
                 {% else %}
-                <li><a href="#">About Us</a></li>
                 <li><a href="{% url 'login' %}">Sign In</a></li>
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
                 {% endif %}
             </ul>
         </div>
     </nav>
-
+    <div id="main" class="is-loading">
+        <h1 class="white-text" id="tagline">
+            Dramatically improve your commute
+        </h1>
+    </div>
     <section class="carousel carousel-slider center">
         <div class="carousel-fixed-item center">
-            <a href="{% url 'login' %}" class="btn waves-effect">Log in</a>
-            <a href="{% url 'signup' %}" class="btn waves-effect">Sign Up</a></li>
+            <a href="{% url 'login' %}" class="btn waves-effect">Sign in</a>
+            <a href="{% url 'signup' %}" class="btn waves-effect">Join now</a></li>
         </div>
         <div class="carousel-item green white-text">
             <h2>First Panel</h2>
@@ -102,8 +110,3 @@
         </div>
     </section>
 
-    <div class="section white">
-        <div class="row container">
-            <h1>Dramatically improve your commute</h1>
-        </div>
-    </div>

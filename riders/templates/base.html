@@ -31,10 +31,10 @@
         <nav>
 
             <ul id="dropdown1" class="dropdown-content">
-                <li><a href="/riders">View routes</a></li>
-                <li><a href="#">Add a new route</a></li>
+                <li><a href="{% url 'riders_index' %}">View routes</a></li>
+                <li><a href="{% url 'route_create' %}">Add a new route</a></li>
                 <li><a href="#">Update an existing route</a></li>
-                <li><a href="#">View past routes</a></li>
+                <li><a href="{% url 'riders_index' %}">View past routes</a></li>
             </ul>
             </ul>
             <div class="nav-wrapper"> <a class="brand-logo center"> <img alt="ROOT"
@@ -54,6 +54,7 @@
                 </ul>
                 {% if user.is_authenticated %}
                 <ul id="mobile-demo" class="side-nav">
+                    
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
                             <div class="user-view">
@@ -70,8 +71,8 @@
                             <i class="material-icons right" style="margin-right:0;">arrow_drop_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a href="/riders">View routes</a></li>
-                                <li><a href="">Add a new route</a></li>
+                                <li><a href="{% url 'riders_index' %}">View routes</a></li>
+                                <li><a href="{% url 'route_create' %}">Add a new route</a></li>
                                 <li><a href="">Update a route</a></li>
                                 <li><a href="">View past routes</a></li>
                             </ul>
