@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Route
+from .models import Route, Location
 
 # Auth
 from django.contrib.auth.forms import UserCreationForm
@@ -66,14 +66,21 @@ def signup(request):
     return render(request, 'registration/signup.html', context)
 
 # TODO: just gonna add these here for now, we're definitely going to have to customize this
-class RouteCreate(LoginRequiredMixin, CreateView):
-    model = Route
-    fields = ['name', 'departureLocation', 'departureTime', 'arrivalLocation']
-    success_url = '/riders'
+# class RouteCreate(LoginRequiredMixin, CreateView):
+#     model = Route
+#     fields = ['name', 'departureLocation', 'departureTime', 'arrivalLocation']
+#     success_url = '/riders'
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+#     def form_valid(self, form):
+#         form.instance.user = self.request.user
+#         return super().form_valid(form)
+
+def route_search(request):
+    locations = Location.objects.all()
+    return render(request, 'riders/search.html', {'locations': locations})
+
+def route_query(request):
+    pass
 
 class RouteDetail(LoginRequiredMixin, DetailView):
     model = Route

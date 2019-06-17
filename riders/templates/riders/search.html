@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Find a Ride</h1>
+
+<form action="{% url 'route_query' %}" method="GET">
+    <label for="arrival">Desired Arrival Time:</label>
+    <input type="text" name="arrival" id="arrival">
+
+    <!-- TODO: lets add some kind of front-end validation that doesn't 
+    let a user select the same location twice, i'll work on it on the 
+    backend at some point  -->
+    <label for="departure">Departing From: </label>
+    <select name="departure" id="departure">
+        {% for location in locations %}
+        <option value="{{ location.id }}">{{ location.name }}</option>
+        {% endfor %}
+    </select>
+    
+    <!-- TODO: this label isn't showing up for some reason -->
+    <label for="destination">Destination: </label>
+    <select name="destination" id="destination">
+        {% for location in locations %}
+        <option value="{{ location.id }}">{{ location.name }}</option>
+        {% endfor %}
+    </select>
+
+    <button>Search</button>
+</form>
+
+<script>
+$(document).ready(function(){
+    $('select').material_select();
+});
+</script>
+
+
+
+{% endblock  %}
