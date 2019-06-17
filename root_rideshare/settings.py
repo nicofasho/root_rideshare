@@ -130,5 +130,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #Added login and logout redirect URL
-LOGIN_REDIRECT_URL = '/riders'
+LOGIN_REDIRECT_URL = '/riders/'
 LOGOUT_REDIRECT_URL = '/'
