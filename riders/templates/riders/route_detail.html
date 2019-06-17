@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
 <h1>Route Detail</h1>
 <div class="card">
     <div class="card-content">
@@ -11,8 +10,10 @@
      
     </div>
     <div class="card-action">
-      <a href="">Edit</a>
-      <a href="">Delete</a>
+      <a href="{% url 'route_update' route.id %}">Edit</a>
+      <a href="{% url 'route_delete' route.id %}">Delete</a>
     </div>
   </div>
+
+
 {% endblock %}

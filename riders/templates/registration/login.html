@@ -34,7 +34,7 @@
                     <li class="active"><a href="/">Home</a></li>
                     {% if user.is_authenticated %}
                     <li><a a class="dropdown-button" data-beloworigin="true" data-hover="true"
-                            data-constrainwidth="false" href="/riders" >Your Commute</a></li>
+                            data-constrainwidth="false" href="/riders">Your Commute</a></li>
                     <li><a href="{% url 'logout' %}">Sign Out</a></li>
                     {% else %}
                     <li><a href="#">About Us</a></li>
