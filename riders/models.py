@@ -63,6 +63,7 @@ class Route(models.Model):
     arrivalLocation = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='arrival')
     users = models.ManyToManyField(Profile)
     name = models.CharField(max_length=100)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
     # not sure about departureTime, since this is gonna be the same
     # time for 5 days a week, seems weird to use actual time
     # units since they snapshot a day, unless there's some
@@ -71,5 +72,5 @@ class Route(models.Model):
 
     # override __str__ method
     def __str__(self):
-        return f'A route that leaves from {self.departureLocation} at the hour of {self.departureTime} to {self.arrivalLocation}'
+        return f'Route leaves from {self.departureLocation} at {self.departureTime} to {self.arrivalLocation} in {self.car}'
 
