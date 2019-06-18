@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['localhost', '172.18.38.148']
 
 INSTALLED_APPS = [
     'riders',
+    'sass_processor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,11 +124,22 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
+SASS_PRECISION = 8
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
 STATIC_URL = '/static/'
+STATIC_ROOT = 'riders/static/'
+
+
+
 
 #Added login and logout redirect URL
 LOGIN_REDIRECT_URL = '/riders/'

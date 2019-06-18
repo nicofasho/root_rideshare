@@ -1,4 +1,4 @@
-{% load static %}
+{% load sass_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@
     <!-- Compiled and minified Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <!-- Internal main stylesheet -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% sass_src 'css/mystyle.scss' %}" rel="stylesheet" type="text/css" />
     <!-- Latest jQuery -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <!-- Internal main JavaScript functions -->
@@ -54,7 +54,7 @@
                             class="btn waves-effect small" href="{% url 'riders_index' %}">View Your Commute</a></li>
                 </ul>
                 {% else %}
-                <li><a class="btn-large waves-effect" href="{% url 'signup' %}">Join Now <i
+                <li><a class="btn-large waves-effect" href="{% url 'signup' %}">Join Now <i id="join-now"
                             class="material-icons right">near_me</i></a></li>
                 <li><a class="white-text center-align." href="{% url 'login' %}"> Have an account?</a></li>
                 </ul>
@@ -86,9 +86,10 @@
             white-text">
                 <h2>Click. Go. Together.</h2>
                 <p class="white-text">Nearly one quarter of U.S. employees say they've left a job because of their lousy
-                    commute. 
+                    commute.
                     <br>
-                    We are a ride-sharing platform that connects riders and drivers so you can fall back in love with your commute and your job.
+                    We are a ride-sharing platform that connects riders and drivers so you can fall back in love with
+                    your commute and your job.
                 </p>
             </div>
             <div class="carousel-item #00695c teal darken-3
@@ -104,14 +105,10 @@
             <div class="carousel-item  light-green darken-4 white-text">
                 <h2>Take cars off the road by riding together.</h2>
                 <p class="white-text">
-
                     Coworkers connect through a private network to carpool to the same destination,
                     relieving parking and traffic congestion, reducing the carbon footprint, and improving
-                    sustainability
-
-
+                    sustainability.
                     <br>
-                    As a ROOT rider, you are relieving parking congestion
                     We believe in encouraging, rewarding, and verifying high-occupancy commuting.
                 </p>
             </div>
