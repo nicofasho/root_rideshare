@@ -1,3 +1,4 @@
+{% load static %}
 {% load sass_tags %}
 
 <!DOCTYPE html>
@@ -20,6 +21,7 @@
     <!-- Compiled and minified Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <!-- Internal main stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% sass_src 'css/mystyle.scss' %}" rel="stylesheet" type="text/css" />
     <!-- Latest jQuery -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
