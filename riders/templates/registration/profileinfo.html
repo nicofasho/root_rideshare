@@ -1,0 +1,73 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ROOT</title>
+    <link href="{% static 'assets/favicon.ico' %}" rel="shortcut icon" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300%7CSource+Sans+Pro&display=swap"
+        rel="stylesheet">
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Internal main stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- Latest jQuery -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- Internal main JavaScript functions -->
+    <script src="{% static 'js/main.js' %}"></script>
+</head>
+
+<body id="login-page">
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper"> <a class="brand-logo center"> <img alt="ROOT" src="{% static 'assets/logo.png' %}"
+                        width="100"></a>
+                <ul class="left hide-on-med-and-down">
+                    <li class="active"><a href="/">Home</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a a class="dropdown-button" data-beloworigin="true" data-hover="true"
+                            data-constrainwidth="false" href="/riders">Your Commute</a></li>
+                    <li><a href="{% url 'logout' %}">Sign Out</a></li>
+                    {% else %}
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="{% url 'login' %}">Sign In</a></li>
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <main class="container">
+        <div class="page">
+            <div class="page-content">
+                <div class="block">
+                    <div class="login-card z-depth-3">
+                        <h4 class="flow-text center-align">Set Profile Info</h4>
+                        {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
+                        <form action="{% url 'profile_create' user.username %}" method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <p class="row">
+                                <button class="waves-effect waves-light btn-large">Sign Up</button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </main>
+    <footer class="page-footer">
+        <div class="right">All Rights Reserved, &copy; 2019 ROOT &nbsp;</div>
+    </footer>
+</body>
+
+</html>
