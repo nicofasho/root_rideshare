@@ -4,37 +4,62 @@
 
 <h1>Find a Ride</h1>
 
+
+
 <form action="{% url 'route_query' %}" method="GET">
-    <label for="arrival">Desired Arrival Time:</label>
-    <input type="text" name="arrival" id="arrival">
-
-    <!-- TODO: lets add some kind of front-end validation that doesn't 
-    let a user select the same location twice, i'll work on it on the 
-    backend at some point  -->
+    <label for="arrival">Desired Depature Time:</label>
+    <input type="text" name="arrival" id="arrival" class="timepicker">
     <label for="departure">Departing From: </label>
-    <select name="departure" id="departure">
+    <select id="select1" name="departure" id="departure">
         {% for location in locations %}
         <option value="{{ location.id }}">{{ location.name }}</option>
         {% endfor %}
     </select>
-    
-    <!-- TODO: this label isn't showing up for some reason -->
-    <label for="destination">Destination: </label>
-    <select name="destination" id="destination">
+    <label> </label>
+    <label for="destination">Going To: </label>
+    <select id="select2" name="destination" id="destination">
         {% for location in locations %}
         <option value="{{ location.id }}">{{ location.name }}</option>
         {% endfor %}
     </select>
 
-    <button>Search</button>
+    <button class="btn waves-effect">Add trip<i class="material-icons right">send</i></button>
 </form>
 
-<script>
-$(document).ready(function(){
-    $('select').material_select();
-});
-</script>
 
+<script>
+    ///Materialize Timepicker
+    var el = document.querySelector('.timepicker');
+    M.Timepicker.init(el);
+
+
+    ///Materalize dropdown options
+    $(document).ready(function () {
+        $('select').material_select();
+    });
+
+    ///Disable dropdown from having the same options selected
+    function preventDupes(select, index) {
+        var options = select.options,
+            len = options.length;
+        while (len--) {
+            options[len].disabled = false;
+        }
+        select.options[index].disabled = true;
+        $('select').material_select();
+    }
+
+    var select1 = document.getElementById('select1');
+    var select2 = document.getElementById('select2');
+
+    select1.onchange = function () {
+        preventDupes.call(this, select2, this.selectedIndex);
+    };
+
+    select2.onchange = function () {
+        preventDupes.call(this, select1, this.selectedIndex);
+    };
+</script>
 
 
 {% endblock  %}
