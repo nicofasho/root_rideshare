@@ -2,27 +2,30 @@
 
 {% block content %}
 
-<h1>Find a Ride</h1>
-
-
+<h2>Let's create your carpool route</h2>
 
 <form action="{% url 'route_query' %}" method="GET">
     <label for="arrival">Desired Depature Time:</label>
     <input type="text" name="arrival" id="arrival" class="timepicker" required>
-    <label for="departure">Departing From: </label>
-    <select id="select1" name="departure" id="departure">
-        {% for location in locations %}
-        <option value="{{ location.id }}">{{ location.name }}</option>
-        {% endfor %}
-    </select>
+    <label for="departure">Departing From:</label>
+    <div class="input-field col s12">
+        <select id="select1" name="departure" id="departure" required>
+            <option value="" disabled selected>---</option>
+            {% for location in locations %}
+            <option value="{{ location.id }}">{{ location.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
     <label> </label>
     <label for="destination">Going To: </label>
-    <select id="select2" name="destination" id="destination">
-        {% for location in locations %}
-        <option value="{{ location.id }}">{{ location.name }}</option>
-        {% endfor %}
-    </select>
-
+    <div class="input-field col s12">
+        <select id="select2" name="destination" id="destination" required>
+            <option value="" disabled selected>---</option>
+            {% for location in locations %}
+            <option value="{{ location.id }}">{{ location.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
     <button class="btn waves-effect" type="submit">Add trip<i class="material-icons right">send</i></button>
 </form>
 
@@ -32,8 +35,6 @@
     var el = document.querySelector('.timepicker');
     M.Timepicker.init(el, { twelveHour: false });
 
-
-    
     ///Materalize dropdown options
     $(document).ready(function () {
         $('select').material_select();
@@ -60,6 +61,7 @@
     select2.onchange = function () {
         preventDupes.call(this, select1, this.selectedIndex);
     };
+
 </script>
 
 
