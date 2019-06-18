@@ -79,6 +79,14 @@ def route_query(request):
     return redirect('riders_index')
 
 # TO DO: Add a remove from route function
+@login_required
+def route_unassoc(request, route_id):
+    curr_profile = Profile.objects.get(user=request.user)
+    curr_route = Route.objects.get(id=route_id)
+    # Prevent a route from having no Profiles(Users) associated with it
+    if curr_route.users.count() > 1:
+        curr_route.users.remove(curr_profile)
+    return redirect('route_create')
 
 class RouteDetail(LoginRequiredMixin, DetailView):
     model = Route
