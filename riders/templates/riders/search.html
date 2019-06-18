@@ -8,7 +8,7 @@
 
 <form action="{% url 'route_query' %}" method="GET">
     <label for="arrival">Desired Depature Time:</label>
-    <input type="text" name="arrival" id="arrival" class="timepicker">
+    <input type="text" name="arrival" id="arrival" class="timepicker" required>
     <label for="departure">Departing From: </label>
     <select id="select1" name="departure" id="departure">
         {% for location in locations %}
@@ -23,15 +23,14 @@
         {% endfor %}
     </select>
 
-    <button class="btn waves-effect">Add trip<i class="material-icons right">send</i></button>
+    <button class="btn waves-effect" type="submit">Add trip<i class="material-icons right">send</i></button>
 </form>
 
 
 <script>
     ///Materialize Timepicker
     var el = document.querySelector('.timepicker');
-    M.Timepicker.init(el);
-
+    M.Timepicker.init(el, { twelveHour: false });
 
     ///Materalize dropdown options
     $(document).ready(function () {
