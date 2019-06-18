@@ -43,7 +43,6 @@
 
 <body>
 
-
     <main>
         <div id="main" class="is-loading">
             <section class="nav">
@@ -55,8 +54,9 @@
                             class="btn waves-effect small" href="{% url 'riders_index' %}">View Your Commute</a></li>
                 </ul>
                 {% else %}
-                <!-- <li><a class="btn waves-effect small" href="{% url 'signup' %}">Join Now</a></li> -->
-                <li><a class="btn waves-effect" href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a class="btn-large waves-effect" href="{% url 'signup' %}">Join Now <i
+                            class="material-icons right">near_me</i></a></li>
+                <li><a class="white-text center-align." href="{% url 'login' %}"> Have an account?</a></li>
                 </ul>
                 {% endif %}
                 <br>
@@ -65,6 +65,14 @@
                 Dramatically improve your commute
             </h1>
         </div>
+        <!-- <div class="section white">
+                <div class="row container">
+                  <h2 class="header">How ROOT works</h2>
+                  <p class="grey-text text-darken-3 lighten-3">
+                      s
+                  </p>
+                </div>
+              </div> -->
         <section class="carousel carousel-slider center">
             <div class="carousel-fixed-item center">
                 {% if user.is_authenticated %}
@@ -74,24 +82,37 @@
                 <a href="{% url 'signup' %}" class="btn waves-effect">Join now</a></li>
                 {% endif %}
             </div>
-            <div class="carousel-item green white-text">
-                <h2>Upgrade your commute.</h2>
+            <div class="carousel-item #66bb6a green darken-1
+            white-text">
+                <h2>Click. Go. Together.</h2>
                 <p class="white-text">Nearly one quarter of U.S. employees say they've left a job because of their lousy
-                    commute. We are a ride-sharing platform that connects riders and drivers
+                    commute. 
+                    <br>
+                    We are a ride-sharing platform that connects riders and drivers so you can fall back in love with your commute and your job.
                 </p>
             </div>
-            <div class="carousel-item brown white-text">
-                <h2>Say hello to the express lane</h2>
+            <div class="carousel-item #00695c teal darken-3
+
+            white-text">
+                <h2>Say hello to the express lane.</h2>
                 <p class="white-text">It's a fast, fun, affordable way to commute. While carpooling isn't new, ROOT
                     rideshare is a fresh way to share the road. Our algorithm identifies the most efficient trip based
                     on the fastest route, nearby carpoolers, carpool lanes, and more.
                     Separate AM and PM trips to fit your unpredictable work schedule and use Root when you're on the go.
                 </p>
             </div>
-            <div class="carousel-item teal white-text">
-                <h2>Take cars off the road by riding together</h2>
-                <p class="white-text">Meet new people, have more energy every day, and make the most of your time while
-                    reducing your carbon footprint.
+            <div class="carousel-item  light-green darken-4 white-text">
+                <h2>Take cars off the road by riding together.</h2>
+                <p class="white-text">
+
+                    Coworkers connect through a private network to carpool to the same destination,
+                    relieving parking and traffic congestion, reducing the carbon footprint, and improving
+                    sustainability
+
+
+                    <br>
+                    As a ROOT rider, you are relieving parking congestion
+                    We believe in encouraging, rewarding, and verifying high-occupancy commuting.
                 </p>
             </div>
         </section>

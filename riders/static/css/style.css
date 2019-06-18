@@ -137,7 +137,6 @@ nav {
 
 
 /* Home page */
-
 h1 {
 	display: inline-block;
 	padding: 1rem;
@@ -207,12 +206,15 @@ h2 {
     color: var(--green);
 }
 
-.carousel-item{
+.carousel-item p.white-text {
     height:5vh;
+    margin-right: 77px;
+    margin-left: 77px;
 }
 
 .carousel {
     height:5vh;
+    padding: 40px;
     /* margin-bottom: 85px; */
 }
 .carousel a {
@@ -225,9 +227,13 @@ h2 {
     padding: 0px;
 }
 
+.carousel.carousel-slider.carousel-item {
+    height: 50%;
+}
+
 
 .nav {
     position: absolute;
-    left: 8%;
-    top: 10%;
+    right: 6%;
+    top: 3%;
 }
