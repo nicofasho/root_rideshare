@@ -1,9 +1,9 @@
 {
 	"version": 3,
-	"file": "style.css",
+	"file": "mystyle.css",
 	"sources": [
 		"mystyle.scss"
 	],
 	"names": [],
-	"mappings": "AAGA,AAAA,IAAI,CAAC;EACH,gBAAgB,EAJC,OAAkB,GAKpC"
+	"mappings": "AAGA,AAAA,IAAI,CAAC;EACH,gBAAgB,EAJC,OAAkB,GAKpC;;AAGD,AAEE,GAFC,CAED,GAAG,CAAA;EAAE,OAAO,EAAE,GAAG,GAEhB;;AAKH,AACE,CADD,CACC,WAAW,CAAC;EACV,MAAM,EAAE,GAAG,GACZ"
 }

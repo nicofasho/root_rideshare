@@ -2,18 +2,54 @@
 
 {% block content %}
 
-<h1>Route Detail</h1>
 <div class="card">
+  <div class="card-header teal lighten-2">
+    <!-- <svg class="align-left" width="100" height="40">
+            <g stroke="var(--green)" fill="none" stroke-linejoin="round">
+              <path class="car_body"
+                d="M47.293 2.375C52.927.792 54.017.805 54.017.805c2.613-.445 6.838-.337 9.42.237l8.381 1.863c2.59.576 6.164 2.606 7.98 4.531l6.348 6.732 6.245 1.877c3.098.508 5.609 3.431 5.609 6.507v4.206c0 .29-2.536 4.189-5.687 4.189H36.808c-2.655 0-4.34-2.1-3.688-4.67 0 0 3.71-19.944 14.173-23.902zM36.5 15.5h54.01"
+                stroke-width="5" />
+              <ellipse stroke-width="4.2" fill="white" cx="83.493" cy="30.25" rx="6.922" ry="6.808" />
+              <ellipse stroke-width="4.2" fill="white" cx="46.511" cy="30.25" rx="6.922" ry="6.808" />
+            </g>
+          </svg> -->
+    <h2>{{ route.name }} at {{ route.departureTime }}</h2>
+  </div>
+  <div class="card-content-bg ">
     <div class="card-content">
-      <span class="card-title">{{ route.name }}</span>
-      <p>Look for [name of driver] in a [color] car.</p>
-     
-    </div>
-    <div class="card-action">
-      <a href="{% url 'route_update' route.id %}">Edit</a>
-      <a href="{% url 'route_delete' route.id %}">Delete</a>
+      <div class="row">
+        <div class="col s5 m5 l5 center-align">
+          <p class="ultra-small">Pickup</p>
+          <h4>{{ route.departureLocation }}</h4>
+        </div>
+        <div class="col s2 m2 l2 center-align">
+          <p><br> <i style="font-size: 50px" class="material-icons">
+              arrow_forward_ios
+            </i>
+          </p>
+        </div>
+        <div class="col s5 m5 l5 center-align">
+          <p class="ultra-small">Dropoff</p>
+          <h4>{{ route.arrivalLocation }}</h4>
+        </div>
+      </div>
     </div>
   </div>
+  <p class="center-align">Look for <span style="color: {{ route.car.color }}">{{ route.car.color }}</span>
+    {{ route.car.make }}
+    {{ route.car.model }}.</p>
+  <div>
+    <div class="card-action">
+      <form action="{% url 'route_unassoc' route.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="waves-effect waves-light btn">Replace this route</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<a href="{% url 'riders_index' %}">Back to your rides</a>
+
 
 
 {% endblock %}
