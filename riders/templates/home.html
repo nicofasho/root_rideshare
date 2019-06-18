@@ -1,3 +1,4 @@
+{% load static %}
 {% load sass_tags %}
 
 <!DOCTYPE html>
@@ -20,6 +21,7 @@
     <!-- Compiled and minified Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <!-- Internal main stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% sass_src 'css/mystyle.scss' %}" rel="stylesheet" type="text/css" />
     <!-- Latest jQuery -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -42,7 +44,6 @@
 </head>
 
 <body>
-
     <main>
         <div id="main" class="is-loading">
             <section class="nav">
@@ -65,14 +66,7 @@
                 Dramatically improve your commute
             </h1>
         </div>
-        <!-- <div class="section white">
-                <div class="row container">
-                  <h2 class="header">How ROOT works</h2>
-                  <p class="grey-text text-darken-3 lighten-3">
-                      s
-                  </p>
-                </div>
-              </div> -->
+      
         <section class="carousel carousel-slider center">
             <div class="carousel-fixed-item center">
                 {% if user.is_authenticated %}

@@ -1,6 +1,6 @@
 {
 	"version": 3,
-	"file": "mystyle.css",
+	"file": "style.css",
 	"sources": [
 		"mystyle.scss"
 	],
