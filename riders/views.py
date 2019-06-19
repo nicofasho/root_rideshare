@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render, redirect
 from .models import Route, Location, Profile
 
@@ -78,17 +80,26 @@ def route_search(request):
 
 @login_required
 def route_query(request):
-    # TO DO: add default values in .GET() [x]
-    # TO DO: add range to arrival time from departure time [x]
+    # Not expecting seconds to be entered with Materialize's Timepicker
+    time_obj = datetime.datetime.strptime(request.GET['arrival'], '%H:%M')
+    time_interval = datetime.timedelta(minutes=15)
+    time_obj_earlier = time_obj - time_interval
+    time_obj_later = time_obj + time_interval
+    time_string_earlier = time_obj_earlier.strftime('%H:%M')
+    time_string_later = time_obj_later.strftime('%H:%M')
+
     potential_routes = Route.objects.filter(
-        departureTime=request.GET['arrival']
+        departureTime__gte=time_string_earlier
+        ).filter(
+        departureTime__lte=time_string_later
         ).filter(
         departureLocation=request.GET['departure']
         ).filter(
         arrivalLocation=request.GET['destination']
         )
+    # TO DO: add default values in .GET() [x]
     # TO DO: can add similar functionality to the model instead or utilize F expressions
-    # TO DO: Models update later to "profiles"
+    # TO DO: Models update later to "profiles" [x]
     # TO DO: logic to selecting carpool with fewest occupied seats, retrieve only on employer
     curr_profile = Profile.objects.get(user=request.user)
     for route in potential_routes:
@@ -97,7 +108,7 @@ def route_query(request):
             break
     return redirect('riders_index')
 
-# TO DO: Add a remove from route function
+
 @login_required
 def route_unassoc(request, route_id):
     curr_profile = Profile.objects.get(user=request.user)
