@@ -11,10 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import environ
 
-environ.Env()
-environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,7 +27,7 @@ SECRET_KEY = 'ultu^z=^8%9k5g0(tx+xk5r7#9(38p49i20vtbyg740^*sc_gi'
 DEBUG = True
 
 # TODO: change back to allowed_hosts = [] before deployment
-ALLOWED_HOSTS = ['localhost', '172.18.38.152']
+ALLOWED_HOSTS = ['localhost', '172.18.38.156']
 
 
 
@@ -80,7 +77,6 @@ WSGI_APPLICATION = 'root_rideshare.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-IS_WINDOWS = os.environ['WINDOWS']
 
 DB = {
     'default': {

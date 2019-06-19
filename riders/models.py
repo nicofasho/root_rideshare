@@ -4,6 +4,16 @@ from datetime import date
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+# for maps api requests
+import requests
+import environ
+import os
+import json
+environ.Env()
+environ.Env.read_env()
+
+api_key = os.environ['GOOGLE_MAPS_API_KEY']
+
 # imports for profile creation
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -69,8 +79,44 @@ class Route(models.Model):
     # units since they snapshot a day, unless there's some
     # different way to use em
     departureTime = models.TimeField(auto_now=False, auto_now_add=False)
+    imgURL = models.CharField(max_length=1000, default='', blank=True)
+
+    class Meta:
+        ordering = ['departureTime']
 
     # override __str__ method
     def __str__(self):
         return f'Route leaves from {self.departureLocation} at {self.departureTime} to {self.arrivalLocation} in {self.car}'
 
+    def save(self, *args, **kwargs):
+        line_response = requests.get(f"https://maps.googleapis.com/maps/api/directions/json?origin={self.departureLocation.name}&destination={self.arrivalLocation.name}&key={api_key}")
+        line = line_response.json()['routes'][0]['overview_polyline']['points']
+
+        self.imgURL = f"https://maps.googleapis.com/maps/api/staticmap?size=300x200&markers=color:white%7Clabel:A%7C{self.departureLocation.name}&markers=color:green%7Clabel:B%7C{self.arrivalLocation.name}&path=enc:{line}&key={api_key}"
+        super(Route, self).save(*args, **kwargs)
+
+    # gonna leave this code cuz there is some good stuff here
+    # @receiver(post_save)
+    # def create_map_url(sender, instance, **kwargs):
+
+    #     line_response = requests.get(f"https://maps.googleapis.com/maps/api/directions/json?origin={sender.departureLocation.name}&destination={sender.arrivalLocation.name}&key={api_key}")
+
+    #     line = line_response.json()['routes'][0]['overview_polyline']['points']
+
+
+    #     #this next bit of code isn't needed for MVP, but if we want to be slick and hit the api and zip it over to amazon S3 we will need it :)
+    #     # img_response_payload = {
+    #     #     'size': '300x200',
+    #     #     'markers': f"color:white%7Clabel:A%7C{instance.departureLocation.name}",
+    #     #     'markers': f"color:green%7Clabel:B%7C{instance.arrivalLocation.name}",
+    #     #     'path': f"enc:{line}",
+    #     #     'key': api_key
+    #     # }
+
+    #     # img_response = requests.get(f"https://maps.googleapis.com/maps/api/staticmap", data=img_response_payload)
+
+    #     instance.imgURL = f"https://maps.googleapis.com/maps/api/staticmap?size=300x200&markers=color:white%7Clabel:A%7C{instance.departureLocation.name}&markers=color:green%7Clabel:B%7C{instance.arrivalLocation.name}&path=enc:{line}&key={api_key}"
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
