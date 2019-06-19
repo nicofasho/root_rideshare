@@ -1,15 +1,27 @@
 body {
   background-color: #f3f7f5; }
 
-p .ultrasmall {
+p .ultra-small {
   margin: 0px; }
 
+p .route-info {
+  margin-left: 15px; }
+
+div > p.ultra-small {
+  text-decoration: underline; }
+
 .card-header {
-  padding: 0px 10px; }
+  padding: 0.5px 10px;
+  font-size: 24px; }
 
 .is-loading h1 {
   transform: scale(0.9);
   opacity: 0; }
+
+.col img {
+  margin-left: 50%;
+  padding: 0;
+  margin-top: 10%; }
 
 :root {
   --green: #047c48;
@@ -43,11 +55,13 @@ nav {
 .animation {
   color: white;
   background-color: var(--green);
+  position: fixed;
   height: 100vh;
   z-index: 1000 !important;
   padding-top: 25vh;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-family: 'Source Sans Pro', sans-serif; }
+  font-family: 'Source Sans Pro', sans-serif;
+  left: 0;
+  right: 0; }
 
 .car {
   filter: drop-shadow(0 1mm 3mm var(--light-yellow));
@@ -146,7 +160,8 @@ h1:after {
   right: 0; }
 
 h2 {
-  font-family: 'Open Sans Condensed', sans-serif; }
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 600; }
 
 .is-loading h1:before,
 .is-loading h1:after {

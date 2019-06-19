@@ -23,8 +23,11 @@
     <!-- Internal main stylesheet -->
     <link href="{% static 'css/mystyle.css' %}" rel="stylesheet">
     <link href="{% sass_src 'css/mystyle.scss' %}" rel="stylesheet" type="text/css" />
-    <!-- Latest jQuery -->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- Recent jQuery -->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
     <!-- Internal main JavaScript functions -->
     <script defer src="{% static 'js/main.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -33,12 +36,6 @@
             $('.carousel').carousel('next');
             setTimeout(autoplay, 10000);
         };
-        // <!-- #tagline transition -->
-        $(document).ready(function () {
-            setTimeout(function () {
-                $("#main").removeClass("is-loading");
-            }, 100)
-        });
         autoplay();
     </script>
 </head>
