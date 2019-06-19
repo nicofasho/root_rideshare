@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'root_rideshare.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-IS_WINDOWS = os.environ['WINDOWS']
+# IS_WINDOWS = os.environ['WINDOWS']
 
 DB = {
     'default': {
@@ -144,3 +144,7 @@ STATIC_ROOT = 'riders/static/'
 #Added login and logout redirect URL
 LOGIN_REDIRECT_URL = '/riders/'
 LOGOUT_REDIRECT_URL = '/'
+
+
+import django_heroku
+django_heroku.settings(locals())
