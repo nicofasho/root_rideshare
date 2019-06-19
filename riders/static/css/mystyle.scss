@@ -5,18 +5,263 @@ body {
   background-color: $background-color;
 }
 
-
-div{
-  
-  svg{ padding: 0px;
-  
-  }
- 
-}
-
-
-p{
+p {
   .ultrasmall {
     margin: 0px;
   }
 }
+
+.card-header {
+  padding: 0px 10px;
+}
+
+
+.is-loading h1 {
+	transform: scale(0.9);
+  opacity: 0;
+}
+
+
+
+:root {
+  --green: #047c48;
+  --white: #ffffff;
+  --light-yellow: #f6f7e1;
+  --lightest-yellow: #c5cc4667;
+}
+
+
+/* App pages  */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color:  var(--white);
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.background .teal-text {
+  margin-left: 10px;
+}
+
+.background img {
+  margin-left: 10px;
+  margin-top: 10px
+}
+
+footer.page-footer {
+  padding-top: 0;
+  background-color: var(--green);
+}
+
+nav {
+  background-color: var(--green);
+}
+
+
+/* Index page animation */
+.animation {
+  color: white;
+  background-color: var(--green);
+  // position: fixed;
+  height: 100vh;
+  z-index: 1000 !important;
+  padding-top: 25vh;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.car {
+  filter: drop-shadow(0 1mm 3mm var(--light-yellow));
+  animation: shake 0.2s ease-in-out infinite alternate;
+}
+
+.car_line {
+  transform-origin: center right;
+  stroke-dasharray: 22;
+  animation: line 0.8s ease-in-out infinite;
+}
+
+.car_line_top {
+  animation-delay: -0.2s;
+}
+
+@keyframes shake {
+  0% {
+      transform: translateY(-1%);
+  }
+  100% {
+      transform: translateY(3%);
+  }
+}
+
+@keyframes line {
+  0% {
+      stroke-dashoffset: 22;
+  }
+  25% {
+      stroke-dashoffset: 22;
+  }
+  50% {
+      stroke-dashoffset: 0;
+  }
+  100% {
+      stroke-dashoffset: -22;
+  }
+}
+
+
+/* Sign up/sign in pages  */
+.forgot-password {
+  text-align: left;
+  font-size: 11px;
+}
+
+.sign-up {
+  color: black;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 35px;
+}
+
+.md .sign-up a{
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.button.login-button {
+  background: #292929!important;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.login-card p {
+  text-align: center;
+  font-weight: 700;
+}
+
+.login-card {
+  background-color:  var(--white);
+  padding: 30px 15px 30px 15px;
+  margin: 40px 0px 0px;
+}
+
+#login-page {
+  background-image: url(../assets/road.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 120vh;
+}
+
+#signup {
+  margin: 20px 90px;
+}
+
+.container {
+  flex: 1 0 auto;
+}
+
+/* Home page */
+h1 {
+display: inline-block;
+padding: 1rem;
+position: relative;
+transform: scale(1);
+  transition: transform 0.5s ease, opacity 1s ease;  
+}
+
+h1:before,
+h1:after {
+height: 2px;
+width: 100%;
+content: "";
+background :white;
+display: block;
+position: absolute;
+transition: width 0.8s ease;
+transition-delay: 0.9s;
+}
+
+h1:before {
+top: 0;
+left: 0;
+}
+
+h1:after {
+bottom: 0;
+right: 0;
+}
+
+h2 {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.is-loading h1:before,
+.is-loading h1:after {
+width: 0;
+}
+
+#tagline {
+  font-size: 4.5rem;
+  font-weight: 900;
+  padding: 1rem;
+  margin-top: -80px;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+#main {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4) 100%, transparent), url("../assets/landing-image.jpeg");
+background-size: cover;
+background-position: center, center;
+height: 100vh;
+width: 100%;
+display: flex;
+justify-content: center;
+  align-items: center;
+}
+
+.card-title {
+  color: var(--green);
+}
+
+.carousel-item p.white-text {
+  height:5vh;
+  margin-right: 77px;
+  margin-left: 77px;
+}
+
+.carousel {
+  height:5vh;
+  padding: 40px;
+}
+
+.carousel a {
+  margin-bottom: 10px;
+  float: center;
+}
+
+.carousel.carousel-slider .carousel-fixed-item.with-indicators {
+  margin: 0px;
+  padding: 0px;
+}
+
+.carousel.carousel-slider.carousel-item {
+  height: 50%;
+}
+
+.nav {
+  position: absolute;
+  right: 6%;
+  top: 3%;
+}
+
+#join-now:hover {
+  margin-top: -6px;
+  transition: all .2s;
+  -o-transition: all .2s;
+  -moz-transition: all .2s;
+  -webkit-transition: all .2s;
+}
+
