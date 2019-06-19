@@ -140,3 +140,7 @@ STATIC_ROOT = 'riders/static/'
 #Added login and logout redirect URL
 LOGIN_REDIRECT_URL = '/riders/'
 LOGOUT_REDIRECT_URL = '/'
+
+
+import django_heroku
+django_heroku.settings(locals())

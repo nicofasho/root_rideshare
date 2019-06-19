@@ -31,7 +31,7 @@
     <script>
         function autoplay() {
             $('.carousel').carousel('next');
-            setTimeout(autoplay, 4500);
+            setTimeout(autoplay, 10000);
         };
         // <!-- #tagline transition -->
         $(document).ready(function () {
@@ -66,8 +66,8 @@
                 Dramatically improve your commute
             </h1>
         </div>
-      
-        <section class="carousel carousel-slider center">
+
+        <section id="about" class="carousel carousel-slider center">
             <div class="carousel-fixed-item center">
                 {% if user.is_authenticated %}
                 <a href="{% url 'riders_index' %}" class="btn waves-effect">Access your account</a>
