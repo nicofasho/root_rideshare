@@ -36,29 +36,72 @@
 <br>
 <a href="{% url 'route_detail' route.id %}">
     <div class="card">
-        <div class="card-content center-align">
-            <span class="card-title">{{ route.name }}</span>
-            <p> <i class="material-icons">
-                    home
-                </i>{{ route.departureLocation }} <i class="material-icons">
-                    arrow_forward_ios
-                </i> <i class="material-icons">
-                    work
-                </i> {{ route.arrivalLocation }}</p>
-            <p>Leaving at {{ route.departureTime }}.</p>
-            <br>
-            <!-- <a class="waves-effect waves-light btn" href="{% url 'route_detail' route.id %}">Reschedule</a> -->
-            <a class="waves-effect waves-light btn" href="{% url 'route_detail' route.id %}">Route Detail</a>
-        </div>
+        
+
+
+        <ul id="task-card" class="collection with-header">
+            <li class="collection-header teal accent-4">
+                    <div class="row">
+                            <div class="col s8 push-s4">
+                                    <img width="150px" alt="Map" class=""
+                                    src="https://bit.ly/fcc-running-cats">
+                                </div>
+                                    
+                            <div class="col s4 pull-s8"><span class="flow-text">
+                                
+                                    <h2 class="task-card-title white-text">{{ route.name }} asdfsfdad</h2>
+                                    <p class="task-card-date white-text">Traveling in style 
+                                    </p>
+                            </span>
+                          </div>
+
+                <!-- <img width="100px" alt="Map" class="right profile-image offset-s6"
+                    src="https://bit.ly/fcc-running-cats">
+                <h2 class="task-card-title white-text">{{ route.name }}</h2>
+                <p class="task-card-date white-text">Traveling in style </p> -->
+
+            </li>
+            <p class="collection-item black-text">
+                <i class="material-icons">
+                    access_time
+                </i>
+                <span class="route-info"> Leaving at {{ route.departureTime }}</span>
+            </p>
+            <p class="collection-item black-text">
+                <i class="material-icons">
+                    people
+                </i>
+                <span class="route-info"> {{ route.users.count }} riders in this car </span>
+            </p>
+            <p class="collection-item black-text">
+                <i class="material-icons">
+                    check_box
+                </i>
+                <span class="route-info">Picking you up at {{ route.departureLocation }}</span>
+            </p>
+            <p class="collection-item black-text">
+                <i class="material-icons">
+                    check_box
+                </i>
+                <span class="route-info"> Dropping you off at {{ route.arrivalLocation  }} </span>
+            </p>
+            <p class="collection-item">
+                <a class="waves-effect waves-light btn" href="{% url 'route_detail' route.id %}">Route Detail</a>
+            </p>
+        </ul>
     </div>
 </a>
 {% endfor %}
 
 {% if routes.count == 1 %}
 <br>
-<p>You only have one ride currently added. If you wanted to add a second to round out your daily commute,
-    <a href="{% url 'route_create' %}">do so here.</a>
-</p>
+<div class="card">
+    <div class="card-content center-align">
+        <p>You only have one ride currently added. If you wanted to add a second to round out your daily commute,
+            <a href="{% url 'route_create' %}">do so here.</a>
+        </p>
+    </div>
+</div>
 {% endif %}
 
 {% else %}
@@ -74,7 +117,9 @@
 </a>
 {% endif %}
 
-<!-- Rerouting users without a profile to create one -->
+<!-- Encouraging users without a profile to create one -->
 {% else %}
-<h2>It looks like you don't have a profile.<a jaccounts/{{ user.username }}/profilecreate"> Add your info.</a> </h2>
-        {% endif %} {% endblock %}
+<h2>It looks like you don't have a profile.<a href="accounts/{{ user.username }}/profilecreate"> Add your info.</a>
+</h2>
+{% endif %}
+{% endblock %}

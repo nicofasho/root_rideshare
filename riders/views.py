@@ -145,6 +145,6 @@ def add_photo(request, username):
 
 @login_required
 def routes_index(request):
-    #  TODO filter by user 
-    routes = Route.objects.all()
+    curr_profile = Profile.objects.get(user=request.user)
+    routes = curr_profile.route_set.all()
     return render(request, 'riders/drivers_index.html', {'routes': routes})

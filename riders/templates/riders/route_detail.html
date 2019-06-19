@@ -26,11 +26,15 @@
       </div>
     </div>
   </div>
-  <p class="center-align">Look for <span style="color: {{ route.car.color }}">{{ route.car.color }}</span>
+  <div class="row center-align">
+      <img width="150px" alt="Map" class=""
+      src="https://bit.ly/fcc-running-cats">
+  </div>
+  <h5 class="center-align">Look for <span style="color: {{ route.car.color }}">{{ route.car.color }}</span>
     {{ route.car.make }}
-    {{ route.car.model }}.</p>
+    {{ route.car.model }}.</h5>
   <div>
-    <div class="card-action">
+    <div class="card-action center-align">
       <form action="{% url 'route_unassoc' route.id %}" method="post">
         {% csrf_token %}
         <button type="submit" class="waves-effect waves-light btn">Replace this route</button>
@@ -40,7 +44,6 @@
 </div>
 
 <a href="{% url 'riders_index' %}">Back to your rides</a>
-
-
+ 
 
 {% endblock %}

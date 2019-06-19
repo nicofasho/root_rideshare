@@ -22,10 +22,13 @@
     <!-- Internal main stylesheet -->
     <link href="{% static 'css/mystyle.css' %}" rel="stylesheet">
     <link href="{% sass_src 'css/mystyle.scss' %}" rel="stylesheet" type="text/css" />
-    <!-- Latest jQuery -->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- Recent jQuery -->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>    
     <!-- Internal main JavaScript functions -->
-    <script src="{% static 'js/main.js' %}"></script>
+    <script defer src="{% static 'js/main.js' %}"></script>
 </head>
 
 <body>
@@ -62,9 +65,9 @@
                             <div class="user-view">
                                 <li>
                                     <div class="background teal lighten-4">
-                                        <img width="50px" alt="" class="circle responsive-img valign profile-image"
+                                        <img width="50px" alt="Profile" class="circle padding-2 responsive-img valign profile-image"
                                             src="https://bit.ly/fcc-running-cats">
-                                        <span class="name teal-text">{{ user.username }}</span><br>
+                                        <span class="card-header teal-text flow-text">{{ user.username }}</span><br>
                                         <span class="email teal-text"> Works at {{ user.profile.employer }}</span>
                                     </div>
                             </div>
@@ -90,19 +93,7 @@
             </div>
         </nav>
     </div>
-    {% else %}
-    <!-- <ul class="side-nav">
-        <li class="bold"><a href="{% url 'login' %}" class="waves-effect waves-teal">Log In</a></li>
-        <li class="bold"><a href="{% url 'signup' %}" class="waves-effect waves-teal">Sign Up</a></li>
-        <li class="bold"><a href="" class="waves-effect waves-teal">About Us</a></li>
-    </ul> -->
-
-    <!-- </div>
-    </nav>
-    </div> -->
-
     {% endif %}
-
     <main class="container">
         {% block content %}
         {% endblock %}
@@ -111,9 +102,6 @@
         <div class="right">All Rights Reserved, &copy; 2019 ROOT &nbsp;</div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-    <script>
-        $(".button-collapse").sideNav();
-    </script>
 </body>
 
 </html>
