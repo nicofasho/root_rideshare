@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Internal main stylesheet -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/mystyle.css' %}" rel="stylesheet">
     <link href="{% sass_src 'css/mystyle.scss' %}" rel="stylesheet" type="text/css">
     <!-- Latest jQuery -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -34,10 +34,10 @@
             <div class="nav-wrapper"> <a class="brand-logo center"> <img alt="ROOT" src="{% static 'assets/logo.png' %}"
                         width="100"></a>
                 <ul class="left hide-on-med-and-down">
-                    <li class="active"><a href="/">Home</a></li>
+                    <li class="active"><a href="{% url 'riders_index' %}">Home</a></li>
                     {% if user.is_authenticated %}
                     <li><a a class="dropdown-button" data-beloworigin="true" data-hover="true"
-                            data-constrainwidth="false" href="/riders">Your Commute</a></li>
+                            data-constrainwidth="false" href="{% url 'riders_index' %}">Your Commute</a></li>
                     <li><a href="{% url 'logout' %}">Sign Out</a></li>
                     {% else %}
                     <li><a href="#">About Us</a></li>

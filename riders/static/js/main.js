@@ -13,7 +13,7 @@ $(document).ready(function () {
             padding: 0,
             fullWidth: true,
             indicators: true,
-            duration: 300,
+            duration: 400,
         }
     );
 });

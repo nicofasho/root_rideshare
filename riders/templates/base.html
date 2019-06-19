@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Internal main stylesheet -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/mystyle.css' %}" rel="stylesheet">
     <link href="{% sass_src 'css/mystyle.scss' %}" rel="stylesheet" type="text/css" />
     <!-- Latest jQuery -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -34,8 +34,9 @@
             <ul id="dropdown1" class="dropdown-content">
                 <li><a href="{% url 'riders_index' %}">View your carpool</a></li>
                 <li><a href="{% url 'route_create' %}">Add a new ride</a></li>
+                <li><a href="/accounts/{{ user.username }}/profilecreate">Edit profile</a></li>
                 {% if user.profile.isDriver %}
-                <li><a href="{% url 'riders_index' %}">Admin view: Edit Routes</a></li>
+                <li><a href="{% url 'routes_index' %}">Admin view: Edit Routes</a></li>
                 {% endif %}
             </ul>
             </ul>
@@ -64,7 +65,7 @@
                                         <img width="50px" alt="" class="circle responsive-img valign profile-image"
                                             src="https://bit.ly/fcc-running-cats">
                                         <span class="name teal-text">{{ user.username }}</span><br>
-                                        <span class="email teal-text">sample-email@gmail.com</span>
+                                        <span class="email teal-text"> Works at {{ user.profile.employer }}</span>
                                     </div>
                             </div>
                     </li>
@@ -74,8 +75,9 @@
                             <ul>
                                 <li><a href="{% url 'riders_index' %}">View carpool</a></li>
                                 <li><a href="{% url 'route_create' %}">Add a new ride</a></li>
+                                <li><a href="/accounts/{{ user.username }}/profilecreate">Edit profile</a></li>
                                 {% if user.profile.isDriver %}
-                                <li><a href="{% url 'riders_index' %}">Admin view: Edit </a></li>
+                                <li><a href="{% url 'routes_index' %}">Admin view: Edit </a></li>
                                 {% endif %}
                             </ul>
                         </div>
