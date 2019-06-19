@@ -2,11 +2,10 @@
 
 {% block content %}
 
-<h2>Admin index </h2>
+<h2>Your driving schedule </h2>
 {% if routes.count %}
 {% for route in routes %}
 <br>
-<a href="">
     <div class="card">
         <div class="card-content center-align">
             <span class="card-title">{{ route.name }}</span>
@@ -19,23 +18,13 @@
                 </i> {{ route.arrivalLocation }}</p>
             <p>Leaving at {{ route.departureTime }}.</p>
             <br>
-            <!-- <a class="waves-effect waves-light btn" href="{% url 'route_detail' route.id %}">Reschedule</a> -->
-            <a class="waves-effect waves-light btn" href="{% url 'route_detail' route.id %}">Route Detail</a>
-        </div>
+            <!-- <a href="{% url 'route_update' route.id %}">Edit</a> -->
+            <a href="{% url 'route_delete' route.id %}">Delete</a>
     </div>
 </a>
 {% endfor %}
 {% else %}
-<br><br><br>
-<a href="{% url 'route_create' %}">
-    <div class="card">
-        <div class="card-content center-align">
-            <h2>Say hello to the express lane. </h2>
-            <h5>A better commute is simply a click away.</h5>
-            <h5 class="waves-effect waves-light btn">Upgrade your commute.</h5>
-        </div>
-    </div>
-</a>
+
 {% endif %}
 
 {% endblock %}

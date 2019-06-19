@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
+# TODO import new Photo model
 from .models import Route, Location, Profile
+import uuid
+import boto3
 
 # Profile Create form import
 from .forms import ProfileForm
@@ -16,8 +19,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 
-# Create your views here.
+# AMZN photo storage
+S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
+BUCKET = 'catcoll2'
 
+# Create your views here.
 def home(request):
     return render(request, 'home.html')
 
@@ -43,6 +49,7 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
+@login_required
 def profile_create(request, username):
     error_message = ''
     if request.user.is_authenticated:
@@ -68,7 +75,6 @@ def profile_create(request, username):
 #     def form_valid(self, form):
 #         form.instance.user = self.request.user
 #         return super().form_valid(form)
-
 
 @login_required
 def route_search(request):
@@ -120,3 +126,25 @@ class RouteDelete(LoginRequiredMixin, DeleteView):
     model = Route
     success_url = '/riders/'
 
+@login_required
+def add_photo(request, username):
+    curr_profile = Profile.objects.get(user=request.user)
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            photo = Photo(url=url, profile_id=curr_profile.id)
+            photo.save()
+        except:
+            print('An error occurred uploading file to S3')
+    return redirect('profile_create', username=request.user.username)
+
+
+@login_required
+def routes_index(request):
+    #  TODO filter by user 
+    routes = Route.objects.all()
+    return render(request, 'riders/drivers_index.html', {'routes': routes})
