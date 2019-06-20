@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+
 <!--Bouncing car animation from static js file  -->
 <div class="animation center-align">
     <svg class="car" width="102" height="50">
@@ -17,18 +19,7 @@
     <h2>ROOT is finding you the perfect ride.</h2>
 </div>
 <!-- end bouncing car animation -->
-{% for photo in profile.photo_set.all %}
-<img class="responsive-img card-panel" src="{{photo.url}}">
-{% empty %}
-<div class="card-panel teal-text center-align">No Photos Uploaded</div>
-{% endfor %}
 
-<form action="{% url 'add_photo' user.profile %}" enctype="multipart/form-data" method="POST" class="card-panel">
-    {% csrf_token %}
-    <input type="file" name="photo-file">
-    <br><br>
-    <input type="submit" class="btn" value="Upload Photo">
-</form>
 
 {% if user.profile.employer %}
 {% if routes.count %}
@@ -42,13 +33,13 @@
         <ul id="task-card" class="collection with-header">
             <li class="collection-header teal accent-4">
                     <div class="row">
-                            <div class="col s8 push-s4">
-                                    <img width="150px" alt="Map" class=""
-                                    src="https://bit.ly/fcc-running-cats">
+                            <div class="col s7 push-s5 center-align">
+                                    <div class="valign-wrapper center-align">
+                                    <img id="test" width="200px" alt="Map" class="map-image"
+                                    src="{{ route.imgURL }}">
                                 </div>
-                                    
-                            <div class="col s4 pull-s8"><span class="flow-text">
-                                
+                            </div>
+                            <div class="col s5 pull-s7"><span class="flow-text">
                                     <h2 class="task-card-title white-text">{{ route.name }} asdfsfdad</h2>
                                     <p class="task-card-date white-text">Traveling in style 
                                     </p>

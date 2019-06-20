@@ -23,20 +23,6 @@ div > p.ultra-small {
   padding: 0;
   margin-top: 10%; }
 
-#test{
-  margin-right: 10px;
-  margin-left: 0px;
-  margin-top: 30%; 
-}
-
-.valign-wrapper{
-  height: 100%;
-}
-
-.map-image {
-  border: 2px solid black;
-}
-
 :root {
   --green: #047c48;
   --white: #ffffff;

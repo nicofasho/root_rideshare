@@ -2,9 +2,9 @@ import datetime
 
 from django.shortcuts import render, redirect
 # TODO import new Photo model
-from .models import Route, Location, Profile
 import uuid
 import boto3
+from .models import Route, Location, Profile, Photo
 
 # Profile Create form import
 from .forms import ProfileForm
@@ -34,7 +34,7 @@ def home(request):
 def riders_index(request):
     curr_profile = Profile.objects.get(user=request.user)
     routes = curr_profile.route_set.all()
-    return render(request, 'riders/index.html', {'routes': routes})
+    return render(request, 'riders/index.html', {'routes': routes}, )
 
 
 def signup(request):
