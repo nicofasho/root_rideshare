@@ -1,5 +1,9 @@
 body {
-  background-color: #f3f7f5; }
+  background-color: #f3f7f5;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: 'Source Sans Pro', sans-serif; }
 
 p .ultra-small {
   margin: 0px; }
@@ -14,76 +18,18 @@ div > p.ultra-small {
   padding: 0.5px 10px;
   font-size: 24px; }
 
-.is-loading h1 {
-  transform: scale(0.9);
-  opacity: 0; }
-
 .col img {
   margin-left: 50%;
   padding: 0;
   margin-top: 10%; }
 
-#test{
-  margin-right: 10px;
-  margin-left: 0px;
-  margin-top: 30%; 
-}
-
-.valign-wrapper{
-  height: 100%;
-}
-
-.map-image {
-  border: 1px solid black;
-}
-
-.timepicker-modal { 
-  top: -0% !important;
-  height: 1200px !important;;
-  margin-bottom: -20px !important;;
-  padding-bottom: -20px !important;;
-}
-
-/* #modal-2ac0342b-e9d4-b385-59c0-6dd8eec21a8f {
-  margin: 5px;
-} */
-
-
-#modal-e668f737-8834-ddd2-58a6-c35f480a1406 > div > div.timepicker-digital-display {
-  padding: 0px;
-}
-
-#modal-9cc0ea2c-5bd0-a59e-d9af-7df257c59857 > div > div.timepicker-digital-display > div > div:nth-child(1) {
-  font-size: 10px;
-}
-
-.modal .modal-content {
-  padding: 5px;
-}
-
-#modal-638b020d-f370-d1c7-dea3-e1599cefff02 > div > div.timepicker-analog-display {
-  /* height: 100vh;
-  display: inline; */
-}
-
-#modal-371684bd-f775-06a0-1251-1678232cd418 > div > div.timepicker-analog-display {
-  /* height: 100vh;
-  display: inline; */
-}
-
+/* App pages  */
 :root {
   --green: #047c48;
   --white: #ffffff;
   --light-yellow: #f6f7e1;
-  --lightest-yellow: #c5cc4667; }
-
-/* App pages  */
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  background-color: var(--white);
-  font-family: 'Source Sans Pro', sans-serif; }
+  --lightest-yellow: #c5cc4667;
+  --black: #000; }
 
 .background .teal-text {
   margin-left: 10px; }
@@ -98,87 +44,6 @@ footer.page-footer {
 
 nav {
   background-color: var(--green); }
-
-/* Index page animation */
-.animation {
-  color: white;
-  background-color: var(--green);
-  position: fixed;
-  height: 100vh;
-  z-index: 1000 !important;
-  padding-top: 25vh;
-  font-family: 'Source Sans Pro', sans-serif;
-  left: 0;
-  right: 0; }
-
-.car {
-  filter: drop-shadow(0 1mm 3mm var(--light-yellow));
-  animation: shake 0.2s ease-in-out infinite alternate; }
-
-.car_line {
-  transform-origin: center right;
-  stroke-dasharray: 22;
-  animation: line 0.8s ease-in-out infinite; }
-
-.car_line_top {
-  animation-delay: -0.2s; }
-
-@keyframes shake {
-  0% {
-    transform: translateY(-1%); }
-  100% {
-    transform: translateY(3%); } }
-
-@keyframes line {
-  0% {
-    stroke-dashoffset: 22; }
-  25% {
-    stroke-dashoffset: 22; }
-  50% {
-    stroke-dashoffset: 0; }
-  100% {
-    stroke-dashoffset: -22; } }
-
-/* Sign up/sign in pages  */
-.forgot-password {
-  text-align: left;
-  font-size: 11px; }
-
-.sign-up {
-  color: black;
-  text-align: center;
-  font-size: 15px;
-  margin-top: 35px; }
-
-.md .sign-up a {
-  color: #FFFFFF;
-  text-decoration: underline; }
-
-.button.login-button {
-  background: #292929 !important;
-  font-size: 12px;
-  text-transform: capitalize; }
-
-.login-card p {
-  text-align: center;
-  font-weight: 700; }
-
-.login-card {
-  background-color: var(--white);
-  padding: 30px 15px 30px 15px;
-  margin: 40px 0px 0px; }
-
-#login-page {
-  background-image: url(../assets/road.jpg);
-  background-size: cover;
-  background-position: center;
-  height: 120vh; }
-
-#signup {
-  margin: 20px 90px; }
-
-.container {
-  flex: 1 0 auto; }
 
 /* Home page */
 h1 {
@@ -210,6 +75,10 @@ h1:after {
 h2 {
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 600; }
+
+.is-loading h1 {
+  transform: scale(0.9);
+  opacity: 0; }
 
 .is-loading h1:before,
 .is-loading h1:after {
@@ -269,4 +138,80 @@ h2 {
   -moz-transition: all .2s;
   -webkit-transition: all .2s; }
 
-/*# sourceMappingURL=mystyle.css.map */
+/* Sign up/sign in pages  */
+.forgot-password {
+  text-align: left;
+  font-size: 11px; }
+
+.sign-up {
+  color: black;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 35px; }
+
+.md .sign-up a {
+  color: #FFFFFF;
+  text-decoration: underline; }
+
+.button.login-button {
+  background: #292929 !important;
+  font-size: 12px;
+  text-transform: capitalize; }
+
+.login-card p {
+  text-align: center;
+  font-weight: 700; }
+
+.login-card {
+  background-color: var(--white);
+  padding: 30px 15px 30px 15px;
+  margin: 40px 0px 0px; }
+
+#login-page {
+  background-image: url(../assets/road.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 120vh; }
+
+#signup {
+  margin: 20px 90px; }
+
+.container {
+  flex: 1 0 auto; }
+
+/* Index page animation */
+.animation {
+  color: white;
+  background-color: var(--green);
+  position: fixed;
+  height: 100vh;
+  z-index: 1000 !important;
+  padding-top: 25vh;
+  font-family: 'Source Sans Pro', sans-serif;
+  left: 0;
+  right: 0; }
+
+.car {
+  filter: drop-shadow(0 1mm 3mm var(--light-yellow));
+  animation: shake 0.2s ease-in-out infinite alternate; }
+
+.car_line {
+  transform-origin: center right;
+  stroke-dasharray: 22;
+  animation: line 0.8s ease-in-out infinite; }
+
+@keyframes shake {
+  0% {
+    transform: translateY(-1%); }
+  100% {
+    transform: translateY(3%); } }
+
+@keyframes line {
+  0% {
+    stroke-dashoffset: 22; }
+  25% {
+    stroke-dashoffset: 22; }
+  50% {
+    stroke-dashoffset: 0; }
+  100% {
+    stroke-dashoffset: -22; } }

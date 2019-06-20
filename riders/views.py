@@ -1,7 +1,6 @@
 import datetime
 
 from django.shortcuts import render, redirect
-# TODO import new Photo model
 import uuid
 import boto3
 from .models import Route, Location, Profile, Photo
@@ -59,7 +58,7 @@ def profile_create(request, username):
     if request.method == 'POST':
         form = ProfileForm(request.POST)
         if form.is_valid():
-            profile.update(picture=request.POST['picture'],employer=request.POST['employer'])
+            profile.update(picture='text',employer=request.POST['employer'])
             return redirect('route_create')
         else:
             error_message = 'Invalid Profile info - try again'
@@ -67,16 +66,6 @@ def profile_create(request, username):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/profileinfo.html', context)
             
-
-# TODO: just gonna add these here for now, we're definitely going to have to customize this
-# class RouteCreate(LoginRequiredMixin, CreateView):
-#     model = Route
-#     fields = ['name', 'departureLocation', 'departureTime', 'arrivalLocation']
-#     success_url = '/riders'
-
-#     def form_valid(self, form):
-#         form.instance.user = self.request.user
-#         return super().form_valid(form)
 
 class RouteAdd(LoginRequiredMixin, CreateView):
     model = Route
@@ -109,10 +98,6 @@ def route_query(request):
         ).filter(
         arrivalLocation=request.GET['destination']
         )
-    # TO DO: add default values in .GET() [x]
-    # TO DO: can add similar functionality to the model instead or utilize F expressions
-    # TO DO: Models update later to "profiles" [x]
-    # TO DO: logic to selecting carpool with fewest occupied seats, retrieve only on employer
     curr_profile = Profile.objects.get(user=request.user)
     for route in potential_routes:
         if route.users.count() < route.car.maxOccupancy:

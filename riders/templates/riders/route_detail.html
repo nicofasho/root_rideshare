@@ -2,15 +2,17 @@
 
 {% block content %}
 
+
+
 <div class="card">
-  <div class="card-header teal lighten-2">
+  <div class="card-header teal white-text">
     <h2>{{ route.name }} at {{ route.departureTime }}</h2>
   </div>
   <div class="card-content-bg">
     <div class="card-content">
       <div class="row">
         <div class="col s5 m5 l5 center-align">
-          <p class="ultra-small">Pickup</p>
+          <p class="ultra-small teal">Pickup</p>
           <h4>{{ route.departureLocation }}</h4>
         </div>
         <div class="col s2 m2 l2 center-align">
@@ -20,18 +22,19 @@
           </p>
         </div>
         <div class="col s5 m5 l5 center-align">
-          <p class="ultra-small">Dropoff</p>
+          <p class="ultra-small teal">Dropoff</p>
           <h4>{{ route.arrivalLocation }}</h4>
         </div>
       </div>
     </div>
   </div>
   <div class="row center-align">
-    <img width="350px" alt="Map" class="map-image z-depth-2" src="{{ route.imgURL }}">
+    <img width="350px" alt="Map not found" class="map-image z-depth-2" src="{{ route.imgURL }}">
   </div>
   <h5 class="center-align">Look for <span style="color: {{ route.car.color }}">{{ route.car.color }}</span>
     {{ route.car.make }}
-    {{ route.car.model }}.</h5>
+    {{ route.car.model }} at {{ route.departureLocation.place }}.
+  </h5>
   <div>
     <div class="card-action center-align">
       <form action="{% url 'route_unassoc' route.id %}" method="post">

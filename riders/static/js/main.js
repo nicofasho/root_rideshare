@@ -1,10 +1,8 @@
 // This is the function that hides the car animation.
 setTimeout(function () {
     $('.animation').fadeOut('fast');
-}, 3000);
+}, 1500);
 
-
-// <!-- #tagline transition -->
 $(document).ready(function () {
     setTimeout(function () {
         $('#main').removeClass('is-loading');
@@ -24,21 +22,25 @@ $(document).ready(function () {
     );
 });
 
+// function autoplay() {
+//     $('.carousel').carousel('next');
+//     setTimeout(autoplay, 10000);
+// };
+// autoplay();
+
 //Side nav toggle
 $('.button-collapse').sideNav();
 
 ///Materialize Timepicker
 var el = document.querySelector('.timepicker');
 M.Timepicker.init(el, { 
-    twelveHour: false,
-    showClearBtn: true,
+    twelveHour: false
  });
 
 ///Materalize dropdown options
 $(document).ready(function () {
     $('select').material_select();
 });
-
 
 ///Disable dropdown from having the same options selected on search page
 function preventDupes(select, index) {

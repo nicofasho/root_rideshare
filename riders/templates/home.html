@@ -24,46 +24,36 @@
     <link href="{% static 'css/mystyle.css' %}" rel="stylesheet">
     <link href="{% sass_src 'css/mystyle.scss' %}" rel="stylesheet" type="text/css" />
     <!-- Recent jQuery -->
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- Internal main JavaScript functions -->
     <script defer src="{% static 'js/main.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-        function autoplay() {
-            $('.carousel').carousel('next');
-            setTimeout(autoplay, 10000);
-        };
-        autoplay();
-    </script>
+    <!-- Internal  JavaScript function for carousel animation-->
+    <script src="{% static 'js/carousel.js' %}"></script>
 </head>
 
 <body>
     <main>
         <div id="main" class="is-loading">
             <section class="nav">
-                <!-- <a class="brand-logo center"> <img alt="ROOT" src="{% static 'assets/logo.png' %}"
-                    width="100"></a> -->
                 <ul>
                     {% if user.is_authenticated %}
                     <li><a data-beloworigin="true" data-hover="true" data-constrainwidth="false"
                             class="btn waves-effect small" href="{% url 'riders_index' %}">View Your Commute</a></li>
+                    {% else %}
+                    <li><a class="btn-large waves-effect" href="{% url 'signup' %}">Join Now <i id="join-now"
+                                class="material-icons right">drive_eta</i></a></li>
+                    <li><a class="white-text center-align." href="{% url 'login' %}"> Have an account?</a></li>
+                    {% endif %}
                 </ul>
-                {% else %}
-                <li><a class="btn-large waves-effect" href="{% url 'signup' %}">Join Now <i id="join-now"
-                            class="material-icons right">near_me</i></a></li>
-                <li><a class="white-text center-align." href="{% url 'login' %}"> Have an account?</a></li>
-                </ul>
-                {% endif %}
                 <br>
             </section>
             <h1 class="white-text" id="tagline">
                 Dramatically improve your commute
             </h1>
         </div>
-
+        <!-- Carousel -->
         <section id="about" class="carousel carousel-slider center">
             <div class="carousel-fixed-item center">
                 {% if user.is_authenticated %}
@@ -75,7 +65,7 @@
             </div>
             <div class="carousel-item #66bb6a green darken-1
             white-text">
-                <h2>Click. Go. Together. </h2>
+                <h2>Click. Go. Together.</h2>
                 <p class="white-text">Nearly one quarter of U.S. employees say they've left a job because of their lousy
                     commute.
                     <br>
@@ -83,14 +73,12 @@
                     your commute and your job.
                 </p>
             </div>
-            <div class="carousel-item #00695c teal darken-3
-
-            white-text">
+            <div class="carousel-item #00695c teal darken-3 white-text">
                 <h2>Say hello to the express lane with ROOT.</h2>
                 <p class="white-text">It's a fast, fun, affordable way to commute. While carpooling isn't new, ROOT
                     rideshare is a fresh way to share the road. Our algorithm identifies the most efficient trip based
                     on the fastest route, nearby carpoolers, carpool lanes, and more.
-                    Separate AM and PM trips to fit your unpredictable work schedule and use Root when you're on the go.
+                    Separate AM and PM trips to fit your unpredictable work schedule and use ROOT when you're on the go.
                 </p>
             </div>
             <div class="carousel-item  light-green darken-4 white-text">
@@ -104,6 +92,7 @@
                 </p>
             </div>
         </section>
+        <!-- End carousel -->
     </main>
 </body>
 
