@@ -41,7 +41,7 @@
                             data-constrainwidth="false" href="{% url 'riders_index' %}">Your Commute</a></li>
                     <li><a href="{% url 'logout' %}">Sign Out</a></li>
                     {% else %}
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="/#about">About Us</a></li>
                     <li><a href="{% url 'login' %}">Sign In</a></li>
                     <li><a href="{% url 'signup' %}">Sign Up</a></li>
                     {% endif %}
@@ -50,36 +50,66 @@
         </nav>
     </div>
     <main class="container">
-
-
-            <form action="{% url 'add_photo' user.profile %}" enctype="multipart/form-data" method="POST" class="card-panel">
-                {% csrf_token %}
-                <input type="file" name="photo-file">
-                <br><br>
-                <input type="submit" class="btn" value="Upload Photo">
-            </form>
-
         <div class="page">
             <div class="page-content">
                 <div class="block">
                     <div class="login-card z-depth-3">
                         <h4 class="flow-text center-align">Create your profile</h4>
-                        <p class="ultra-small">Tap into your local ROOT community to find coworkers going your way.</p>
+                        <p class="ultra-small">Tap into your local ROOT community to find coworkers going your way. Add
+                            your profile picture and employer.</p>
                         {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
-                        <form action="{% url 'profile_create' user.username %}" method="post">
+                        <!-- Form to add profile picture -->
+                        {% if user.profile.photo_set.all %}
+                        <!-- If the user has a profile picture added, show the most recent -->
+                        <form action="{% url 'add_photo' user.profile %}" enctype="multipart/form-data" method="POST"
+                            class="card-panel">
+                            <div class="row">
+                                <div class="col s6 m6 l6 valign center-align">
+                                    <p class="row"> </p>
+                                    <img height="50px" width="100px"
+                                        class="padding-2 circle responsive-img center-align" alt="Profile"
+                                        src="{{ user.profile.photo_set.last.url }}">
+                                </div>
+                                <div class="col s6 m6 l6">
+                                    <p class="row">
+                                        {% csrf_token %}
+                                        <input type="file" name="photo-file">
+                                        <br><br>
+                                        <button class="waves-effect waves-light btn" type="submit">Change Photo
+                                        </button>
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- If the user has no profile pictures, allow them to add one -->
+                        {% else %}
+                        <form action="{% url 'add_photo' user.profile %}" enctype="multipart/form-data" method="POST"
+                            class="card-panel">
+                            {% csrf_token %}
+                            <input type="file" name="photo-file">
+                            <br><br>
+                            <p class="row">
+                                <button class="waves-effect waves-light btn" type="submit">Add a photo </button>
+                            </p>
+                        </form>
+                        {% endif %}
+                        <!-- End form -->
+                        <!-- Form to update profile employer -->
+                        <form action="{% url 'profile_create' user.username %}" method="post" class="card-panel">
                             {% csrf_token %}
                             {{ form.as_p }}
                             <p class="row">
                                 <button class="waves-effect waves-light btn-large">Get your ride on</button>
                             </p>
                         </form>
+                        <!-- End form -->
                     </div>
                 </div>
             </div>
         </div>
     </main>
     <footer class="page-footer">
-        <div class="right">All Rights Reserved, &copy; 2019 ROOT &nbsp;</div>
+        <div class="center">All Rights Reserved, &copy; 2019 ROOT &nbsp;</div>
     </footer>
 </body>
 

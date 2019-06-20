@@ -24,10 +24,8 @@
     <link href="{% static 'css/mystyle.css' %}" rel="stylesheet">
     <link href="{% sass_src 'css/mystyle.scss' %}" rel="stylesheet" type="text/css">
     <!-- Recent jQuery -->
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- Internal main JavaScript functions -->
     <script src="{% static 'js/main.js' %}"></script>
 </head>
@@ -44,7 +42,7 @@
                             data-constrainwidth="false" href="{% url 'riders_index' %}">Your Commute</a></li>
                     <li><a href="{% url 'logout' %}">Sign Out</a></li>
                     {% else %}
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="/#about">About Us</a></li>
                     <li><a href="{% url 'login' %}">Sign In</a></li>
                     <li><a href="{% url 'signup' %}">Sign Up</a></li>
                     {% endif %}
@@ -72,7 +70,7 @@
             </div>
     </main>
     <footer class="page-footer">
-        <div class="right">All Rights Reserved, &copy; 2019 ROOT &nbsp;</div>
+        <div class="center">All Rights Reserved, &copy; 2019 ROOT &nbsp;</div>
     </footer>
 </body>
 

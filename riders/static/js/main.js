@@ -7,7 +7,7 @@ setTimeout(function () {
 // <!-- #tagline transition -->
 $(document).ready(function () {
     setTimeout(function () {
-        $("#main").removeClass("is-loading");
+        $('#main').removeClass('is-loading');
     }, 100)
 });
 
@@ -19,17 +19,20 @@ $(document).ready(function () {
             padding: 0,
             fullWidth: true,
             indicators: true,
-            duration: 10,
+            duration: 300,
         }
     );
 });
 
 //Side nav toggle
-$(".button-collapse").sideNav();
+$('.button-collapse').sideNav();
 
 ///Materialize Timepicker
 var el = document.querySelector('.timepicker');
-M.Timepicker.init(el, { twelveHour: false });
+M.Timepicker.init(el, { 
+    twelveHour: false,
+    showClearBtn: true,
+ });
 
 ///Materalize dropdown options
 $(document).ready(function () {
