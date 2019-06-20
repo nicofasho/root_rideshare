@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Route, Location, Car
+from .models import Profile, Route, Location, Car, Photo
 
 #extra includes to make Profile admin console work
 from django.contrib.auth.admin import UserAdmin
@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 admin.site.register(Route)
 admin.site.register(Location)
 admin.site.register(Car)
+admin.site.register(Photo)
+admin.site.register(Profile)
 
 #Profile admin stuff
 
