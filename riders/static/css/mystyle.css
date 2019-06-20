@@ -34,7 +34,41 @@ div > p.ultra-small {
 }
 
 .map-image {
-  border: 2px solid black;
+  border: 1px solid black;
+}
+
+.timepicker-modal { 
+  top: -0% !important;
+  height: 1200px !important;;
+  margin-bottom: -20px !important;;
+  padding-bottom: -20px !important;;
+}
+
+/* #modal-2ac0342b-e9d4-b385-59c0-6dd8eec21a8f {
+  margin: 5px;
+} */
+
+
+#modal-e668f737-8834-ddd2-58a6-c35f480a1406 > div > div.timepicker-digital-display {
+  padding: 0px;
+}
+
+#modal-9cc0ea2c-5bd0-a59e-d9af-7df257c59857 > div > div.timepicker-digital-display > div > div:nth-child(1) {
+  font-size: 10px;
+}
+
+.modal .modal-content {
+  padding: 5px;
+}
+
+#modal-638b020d-f370-d1c7-dea3-e1599cefff02 > div > div.timepicker-analog-display {
+  /* height: 100vh;
+  display: inline; */
+}
+
+#modal-371684bd-f775-06a0-1251-1678232cd418 > div > div.timepicker-analog-display {
+  /* height: 100vh;
+  display: inline; */
 }
 
 :root {

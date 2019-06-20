@@ -60,7 +60,7 @@ def profile_create(request, username):
         form = ProfileForm(request.POST)
         if form.is_valid():
             profile.update(picture=request.POST['picture'],employer=request.POST['employer'])
-            return redirect('riders_index')
+            return redirect('route_create')
         else:
             error_message = 'Invalid Profile info - try again'
     form = ProfileForm()
@@ -77,6 +77,12 @@ def profile_create(request, username):
 #     def form_valid(self, form):
 #         form.instance.user = self.request.user
 #         return super().form_valid(form)
+
+class RouteAdd(LoginRequiredMixin, CreateView):
+    model = Route
+    fields = ['car', 'users', 'departureLocation', 'name', 'arrivalLocation', 'departureTime' ]
+    success_url = '/routes/'
+
 
 @login_required
 def route_search(request):
@@ -127,15 +133,9 @@ def route_unassoc(request, route_id):
 class RouteDetail(LoginRequiredMixin, DetailView):
     model = Route
 
-
-class RouteUpdate(LoginRequiredMixin, UpdateView):
-    model = Route
-    fields = ['name', 'departureLocation', 'departureTime', 'arrivalLocation']
-
-
 class RouteDelete(LoginRequiredMixin, DeleteView):
     model = Route
-    success_url = '/riders/'
+    success_url = '/routes/'
 
 @login_required
 def add_photo(request, username):

@@ -3,6 +3,9 @@
 {% block content %}
 
 <h2>Your driving schedule </h2>
+<h3>
+    <a class="btn waves-effect" href="{% url 'route_add' %}">Add a new route</a>
+    </h3>
 {% if routes.count %}
 {% for route in routes %}
 <br>
@@ -18,7 +21,6 @@
                 </i> {{ route.arrivalLocation }}</p>
             <p>Leaving at {{ route.departureTime }}.</p>
             <br>
-            <!-- <a href="{% url 'route_update' route.id %}">Edit</a> -->
             <a href="{% url 'route_delete' route.id %}">Delete</a>
     </div>
 </a>
@@ -26,5 +28,6 @@
 {% else %}
 
 {% endif %}
+
 
 {% endblock %}

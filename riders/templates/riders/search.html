@@ -5,7 +5,7 @@
 <h2>Let's create your carpool route</h2>
 
 <form action="{% url 'route_query' %}" method="GET">
-    <label for="arrival">Desired Depature Time:</label>
+    <label for="arrival">Desired Depature Time in Military Time:</label>
     <input type="text" name="arrival" id="arrival" class="timepicker" required>
     <label for="departure">Departing From:</label>
     <div class="input-field col s12">

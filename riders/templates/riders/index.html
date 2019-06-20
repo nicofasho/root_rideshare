@@ -27,26 +27,25 @@
 <br>
 <a href="{% url 'route_detail' route.id %}">
     <div class="card">
-        
+
 
 
         <ul id="task-card" class="collection with-header">
             <li class="collection-header teal accent-4">
-                    <div class="row">
-                            <div class="col s7 push-s5 center-align">
-                                    <div class="valign-wrapper center-align">
-                                    <img id="test" width="200px" alt="Map" class="map-image"
-                                    src="{{ route.imgURL }}">
-                                </div>
-                            </div>
-                            <div class="col s5 pull-s7"><span class="flow-text">
-                                    <h2 class="task-card-title white-text">{{ route.name }} asdfsfdad</h2>
-                                    <p class="task-card-date white-text">Traveling in style 
-                                    </p>
-                            </span>
-                          </div>
+                <div class="row">
+                    <div class="col s7 push-s5 center-align">
+                        <div class="valign-wrapper center-align">
+                            <img id="test" width="200px" alt="Map" class="map-image" src="{{ route.imgURL }}">
+                        </div>
+                    </div>
+                    <div class="col s5 pull-s7"><span class="flow-text">
+                            <h2 class="task-card-title white-text">{{ route.name }} asdfsfdad</h2>
+                            <p class="task-card-date white-text">Traveling in style
+                            </p>
+                        </span>
+                    </div>
 
-                <!-- <img width="100px" alt="Map" class="right profile-image offset-s6"
+                    <!-- <img width="100px" alt="Map" class="right profile-image offset-s6"
                     src="https://bit.ly/fcc-running-cats">
                 <h2 class="task-card-title white-text">{{ route.name }}</h2>
                 <p class="task-card-date white-text">Traveling in style </p> -->
@@ -66,13 +65,13 @@
             </p>
             <p class="collection-item black-text">
                 <i class="material-icons">
-                    check_box
+                    place
                 </i>
                 <span class="route-info">Picking you up at {{ route.departureLocation }}</span>
             </p>
             <p class="collection-item black-text">
                 <i class="material-icons">
-                    check_box
+                    place
                 </i>
                 <span class="route-info"> Dropping you off at {{ route.arrivalLocation  }} </span>
             </p>
@@ -110,7 +109,7 @@
 
 <!-- Encouraging users without a profile to create one -->
 {% else %}
-<h2>It looks like you don't have a profile.<a href="accounts/{{ user.username }}/profilecreate"> Add your info.</a>
+<h2>It looks like you don't have a profile.<a href="{% url 'profile_create' user.username %}"> Add your info.</a>
 </h2>
 {% endif %}
 {% endblock %}
