@@ -4,29 +4,57 @@
 
 <h2>Your driving schedule </h2>
 <h3>
-    <a class="btn waves-effect" href="{% url 'route_add' %}">Add a new route</a>
+    <a class="btn waves-effect waves-light" href="{% url 'route_add' %}">Add a new route</a>
     </h3>
 {% if routes.count %}
 {% for route in routes %}
-<br>
-    <div class="card">
-        <div class="card-content center-align">
-            <span class="card-title">{{ route.name }}</span>
-            <p> <i class="material-icons">
-                    home
-                </i>{{ route.departureLocation }} <i class="material-icons">
-                    arrow_forward_ios
-                </i> <i class="material-icons">
-                    work
-                </i> {{ route.arrivalLocation }}</p>
-            <p>Leaving at {{ route.departureTime }}.</p>
-            <br>
-            <a href="{% url 'route_delete' route.id %}">Delete</a>
-    </div>
-</a>
+<div class="card">
+    <ul id="task-card" class="collection with-header">
+        <li class="collection-header teal accent-4">
+            <div class="row">
+                <span class="flow-text">
+                    <h2 class="task-card-title white-text">{{ route.name }} </h2>
+                </span>
+        </li>
+        <p class="collection-item black-text">
+            <i class="material-icons">
+                access_time
+            </i>
+            <span class="route-info"> Leaving at {{ route.departureTime }}</span>
+        </p>
+        <p class="collection-item black-text">
+            <i class="material-icons">
+                people
+            </i>
+            <span class="route-info"> {{ route.users.count }} riders in this car </span>
+        </p>
+        <p class="collection-item black-text">
+            <i class="material-icons">
+                place
+            </i>
+            <span class="route-info">Picking you up at {{ route.departureLocation }}
+                ({{ route.departureLocation.place }})</span>
+        </p>
+        <p class="collection-item black-text">
+            <i class="material-icons">
+                place
+            </i>
+            <span class="route-info"> Dropping you off at {{ route.arrivalLocation  }}
+                ({{ route.arrivalLocation.place }})</span>
+        </p>
+        <p class="collection-item center-align">
+            <a class="btn waves-effect waves-light" href="{% url 'route_delete' route.id %}">Delete</a>
+
+            </p>
+            <p class="collection-item center-align">
+            <img class="center-align padding-2" alt="Map not found" class="map-image" src="{{ route.imgURL }}">
+        </p>
+        </div>
+    </p>
+    </ul>
+</div>
 {% endfor %}
 {% else %}
-
 {% endif %}
 
 

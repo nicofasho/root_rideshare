@@ -35,7 +35,7 @@
             <div class="nav-wrapper"> <a class="brand-logo center"> <img alt="ROOT" src="{% static 'assets/logo.png' %}"
                         width="100"></a>
                 <ul class="left hide-on-med-and-down">
-                    <li class="active"><a href="{% url 'riders_index' %}">Home</a></li>
+                    <li class="active"><a href="/">Home</a></li>
                     {% if user.is_authenticated %}
                     <li><a a class="dropdown-button" data-beloworigin="true" data-hover="true"
                             data-constrainwidth="false" href="{% url 'riders_index' %}">Your Commute</a></li>

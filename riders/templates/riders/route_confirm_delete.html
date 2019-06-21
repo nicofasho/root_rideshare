@@ -9,7 +9,7 @@
 
 <form action="" method="POST">
   {% csrf_token %}
-  <input type="submit" value="Yes - Delete!" class="btn">
+  <input type="submit" value="Yes - Delete!" class="btn waves-effect waves-light">
   <a href="{% url 'route_detail' route.id %}">Cancel</a>
 </form>
 

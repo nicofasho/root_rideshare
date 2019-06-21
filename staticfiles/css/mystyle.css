@@ -1,5 +1,9 @@
 body {
-  background-color: #f3f7f5; }
+  background-color: #f3f7f5;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: 'Source Sans Pro', sans-serif; }
 
 p .ultra-small {
   margin: 0px; }
@@ -14,28 +18,18 @@ div > p.ultra-small {
   padding: 0.5px 10px;
   font-size: 24px; }
 
-.is-loading h1 {
-  transform: scale(0.9);
-  opacity: 0; }
-
 .col img {
   margin-left: 50%;
   padding: 0;
   margin-top: 10%; }
 
+/* App pages  */
 :root {
   --green: #047c48;
   --white: #ffffff;
   --light-yellow: #f6f7e1;
-  --lightest-yellow: #c5cc4667; }
-
-/* App pages  */
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  background-color: var(--white);
-  font-family: 'Source Sans Pro', sans-serif; }
+  --lightest-yellow: #c5cc4667;
+  --black: #000; }
 
 .background .teal-text {
   margin-left: 10px; }
@@ -50,87 +44,6 @@ footer.page-footer {
 
 nav {
   background-color: var(--green); }
-
-/* Index page animation */
-.animation {
-  color: white;
-  background-color: var(--green);
-  position: fixed;
-  height: 100vh;
-  z-index: 1000 !important;
-  padding-top: 25vh;
-  font-family: 'Source Sans Pro', sans-serif;
-  left: 0;
-  right: 0; }
-
-.car {
-  filter: drop-shadow(0 1mm 3mm var(--light-yellow));
-  animation: shake 0.2s ease-in-out infinite alternate; }
-
-.car_line {
-  transform-origin: center right;
-  stroke-dasharray: 22;
-  animation: line 0.8s ease-in-out infinite; }
-
-.car_line_top {
-  animation-delay: -0.2s; }
-
-@keyframes shake {
-  0% {
-    transform: translateY(-1%); }
-  100% {
-    transform: translateY(3%); } }
-
-@keyframes line {
-  0% {
-    stroke-dashoffset: 22; }
-  25% {
-    stroke-dashoffset: 22; }
-  50% {
-    stroke-dashoffset: 0; }
-  100% {
-    stroke-dashoffset: -22; } }
-
-/* Sign up/sign in pages  */
-.forgot-password {
-  text-align: left;
-  font-size: 11px; }
-
-.sign-up {
-  color: black;
-  text-align: center;
-  font-size: 15px;
-  margin-top: 35px; }
-
-.md .sign-up a {
-  color: #FFFFFF;
-  text-decoration: underline; }
-
-.button.login-button {
-  background: #292929 !important;
-  font-size: 12px;
-  text-transform: capitalize; }
-
-.login-card p {
-  text-align: center;
-  font-weight: 700; }
-
-.login-card {
-  background-color: var(--white);
-  padding: 30px 15px 30px 15px;
-  margin: 40px 0px 0px; }
-
-#login-page {
-  background-image: url(../assets/road.jpg);
-  background-size: cover;
-  background-position: center;
-  height: 120vh; }
-
-#signup {
-  margin: 20px 90px; }
-
-.container {
-  flex: 1 0 auto; }
 
 /* Home page */
 h1 {
@@ -162,6 +75,10 @@ h1:after {
 h2 {
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 600; }
+
+.is-loading h1 {
+  transform: scale(0.9);
+  opacity: 0; }
 
 .is-loading h1:before,
 .is-loading h1:after {
@@ -220,5 +137,83 @@ h2 {
   -o-transition: all .2s;
   -moz-transition: all .2s;
   -webkit-transition: all .2s; }
+
+/* Sign up/sign in pages  */
+.forgot-password {
+  text-align: left;
+  font-size: 11px; }
+
+.sign-up {
+  color: black;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 35px; }
+
+.md .sign-up a {
+  color: #FFFFFF;
+  text-decoration: underline; }
+
+.button.login-button {
+  background: #292929 !important;
+  font-size: 12px;
+  text-transform: capitalize; }
+
+.login-card p {
+  text-align: center;
+  font-weight: 700; }
+
+.login-card {
+  background-color: var(--white);
+  padding: 30px 15px 30px 15px;
+  margin: 40px 0px 0px; }
+
+#login-page {
+  background-image: url(../assets/road.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 120vh; }
+
+#signup {
+  margin: 20px 90px; }
+
+.container {
+  flex: 1 0 auto; }
+
+/* Index page animation */
+.animation {
+  color: white;
+  background-color: var(--green);
+  position: fixed;
+  height: 100vh;
+  z-index: 1000 !important;
+  padding-top: 25vh;
+  font-family: 'Source Sans Pro', sans-serif;
+  left: 0;
+  right: 0; }
+
+.car {
+  filter: drop-shadow(0 1mm 3mm var(--light-yellow));
+  animation: shake 0.2s ease-in-out infinite alternate; }
+
+.car_line {
+  transform-origin: center right;
+  stroke-dasharray: 22;
+  animation: line 0.8s ease-in-out infinite; }
+
+@keyframes shake {
+  0% {
+    transform: translateY(-1%); }
+  100% {
+    transform: translateY(3%); } }
+
+@keyframes line {
+  0% {
+    stroke-dashoffset: 22; }
+  25% {
+    stroke-dashoffset: 22; }
+  50% {
+    stroke-dashoffset: 0; }
+  100% {
+    stroke-dashoffset: -22; } }
 
 /*# sourceMappingURL=mystyle.css.map */

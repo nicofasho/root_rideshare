@@ -125,14 +125,10 @@ STATICFILES_FINDERS = [
 
 SASS_PRECISION = 8
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = 'riders/static/'
-
-
-
 
 #Added login and logout redirect URL
 LOGIN_REDIRECT_URL = '/riders/'

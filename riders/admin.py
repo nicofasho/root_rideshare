@@ -13,7 +13,7 @@ admin.site.register(Car)
 admin.site.register(Photo)
 admin.site.register(Profile)
 
-#Profile admin stuff
+#Profile admin 
 
 class ProfileInline(admin.StackedInline):
     model = Profile
