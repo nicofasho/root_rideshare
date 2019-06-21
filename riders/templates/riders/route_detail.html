@@ -3,7 +3,6 @@
 {% block content %}
 
 
-
 <div class="card">
   <div class="card-header teal white-text">
     <h2>{{ route.name }} at {{ route.departureTime }}</h2>
@@ -12,17 +11,13 @@
     <div class="card-content">
       <div class="row">
         <div class="col s5 m5 l5 center-align">
-          <p class="ultra-small teal">Pickup</p>
+          <p class="ultra-small white-text teal">Pickup</p>
           <h4>{{ route.departureLocation }}</h4>
         </div>
         <div class="col s2 m2 l2 center-align">
-          <p><br> <i style="font-size: 50px" class="material-icons">
-              arrow_forward_ios
-            </i>
-          </p>
         </div>
         <div class="col s5 m5 l5 center-align">
-          <p class="ultra-small teal">Dropoff</p>
+          <p class="ultra-small white-text teal">Dropoff</p>
           <h4>{{ route.arrivalLocation }}</h4>
         </div>
       </div>
@@ -39,13 +34,13 @@
     <div class="card-action center-align">
       <form action="{% url 'route_unassoc' route.id %}" method="post">
         {% csrf_token %}
-        <button type="submit" class="waves-effect waves-light btn">Replace this route</button>
+        <button type="submit" class="btn waves-effect waves-light">Replace this route</button>
       </form>
     </div>
   </div>
 </div>
 
-<a href="{% url 'riders_index' %}">Back to your rides</a>
+<a class="underline" href="{% url 'riders_index' %}">Back to your rides</a>
 
 
 {% endblock %}

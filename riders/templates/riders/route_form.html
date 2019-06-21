@@ -2,20 +2,15 @@
 
 {% block content %}
 
-
-{% if object %}
-<h1>Edit <span class="teal-text">{{object.name}} route.</span></h1>
-{% else %}
-<h1>Add a route</h1>
-{% endif %}
-<!-- Leaving the action empty makes the form post to the same url used to display it -->
+<h2>Add a route</h2>
+ <!-- Form to add a new route-->
 <form action="" method="post">
-<!-- Django requires the following for security purposes -->
 {% csrf_token %}
 <table>
-  <!-- Render the inputs inside of <tr>s & <td>s -->
   {{ form.as_table }}
 </table>
-<input type="submit" value="Submit!" class="btn">
+<input type="submit" value="Submit!" class="btn waves-effect waves-light">
 </form>
+ <!-- End form-->
+
 {% endblock %}

@@ -3,13 +3,13 @@
 {% block content %}
 
 <h2>Let's create your carpool</h2>
-
+<!-- Form to match riders with drivers-->
 <form action="{% url 'route_query' %}" method="GET">
     <label for="arrival">Desired Depature Time in Military Time:</label>
     <input type="text" name="arrival" id="arrival" class="timepicker" required>
     <label for="departure">Departing From:</label>
     <div class="input-field col s12">
-        <select id="select1" name="departure" id="departure" required>
+        <select id="select1" name="departure" id="departure" required maxlength="100">
             <option value="" disabled selected>---</option>
             {% for location in locations %}
             <option value="{{ location.id }}">{{ location.name }}</option>
@@ -19,7 +19,7 @@
     <label> </label>
     <label for="destination">Going To: </label>
     <div class="input-field col s12">
-        <select id="select2" name="destination" id="destination" required>
+        <select id="select2" name="destination" id="destination" required maxlength="100">
             <option value="" disabled selected>---</option>
             {% for location in locations %}
             <option value="{{ location.id }}">{{ location.name }}</option>
@@ -28,9 +28,6 @@
     </div>
     <button class="btn waves-effect waves-light" type="submit">Add trip<i class="material-icons right">send</i></button>
 </form>
-
-
-
-
+<!-- End form-->
 
 {% endblock  %}

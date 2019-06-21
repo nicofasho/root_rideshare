@@ -54,9 +54,9 @@
             <div class="page-content">
                 <div class="block">
                     <div class="login-card z-depth-3">
-                        <h4 class="flow-text center-align">Create your profile</h4>
+                        <h2 class=" center-align">Create your profile</h2>
                         <p class="ultra-small">Tap into your local ROOT community to find coworkers going your way. Add
-                            your profile picture and employer.</p>
+                            your profile picture and employer to help your driver indentify you.</p>
                         {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
                         <!-- Form to add profile picture -->
                         {% if user.profile.photo_set.all %}
@@ -66,16 +66,14 @@
                             <div class="row">
                                 <div class="col s6 m6 l6 valign center-align">
                                     <p class="row"> </p>
-                                    <img height="50px" width="100px"
-                                        class="padding-2 responsive-img center-align" alt="Profile"
-                                        src="{{ user.profile.photo_set.last.url }}">
+                                    <img height="50px" width="100px" class="padding-2 responsive-img center-align"
+                                        alt="Profile" src="{{ user.profile.photo_set.last.url }}">
                                 </div>
                                 <div class="col s6 m6 l6">
-                                    <p class="row">
-                                        {% csrf_token %}
-                                        <input type="file" name="photo-file">
-                                        <br><br>
-                                        <button class="waves-effect waves-light btn" type="submit">Change Photo
+                                    {% csrf_token %}
+                                    <input class="left" type="file" name="photo-file">
+                                    <p><br>
+                                        <button class="waves-effect waves-light btn left" type="submit">Change Photo
                                         </button>
                                     </p>
                                 </div>

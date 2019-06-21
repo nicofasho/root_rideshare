@@ -3,9 +3,8 @@
 {% block content %}
 
 <h2>Your driving schedule </h2>
-<h3>
-    <a class="btn waves-effect waves-light" href="{% url 'route_add' %}">Add a new route</a>
-    </h3>
+<h3><a class="btn waves-effect waves-light" href="{% url 'route_add' %}">Add a new route</a></h3>
+ <!-- Show all routes the driver is associated with-->
 {% if routes.count %}
 {% for route in routes %}
 <div class="card">
@@ -45,12 +44,10 @@
         <p class="collection-item center-align">
             <a class="btn waves-effect waves-light" href="{% url 'route_delete' route.id %}">Delete</a>
 
-            </p>
-            <p class="collection-item center-align">
+        </p>
+        <p class="collection-item center-align">
             <img class="center-align padding-2" alt="Map not found" class="map-image" src="{{ route.imgURL }}">
         </p>
-        </div>
-    </p>
     </ul>
 </div>
 {% endfor %}

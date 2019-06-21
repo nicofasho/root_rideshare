@@ -57,6 +57,7 @@
                     <div class="login-card z-depth-3">
                         <h4 class="flow-text center-align">You're one step away from an easier commute. Sign up for
                             ROOT.</h4>
+                        <!-- Form to sign in-->
                         {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
                         <form action="{% url 'signup' %}" method="post">
                             {% csrf_token %}
@@ -65,6 +66,7 @@
                                 <button class="waves-effect waves-light btn-large">Sign Up</button>
                             </p>
                         </form>
+                        <!-- End form-->
                     </div>
                 </div>
             </div>

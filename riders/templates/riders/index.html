@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
 <!--Bouncing car animation from static js file  -->
 <div class="animation center-align">
     <svg class="car" width="102" height="50">
@@ -20,7 +19,7 @@
 </div>
 <!-- end bouncing car animation -->
 
-
+<!-- show each ride associated with the user -->
 {% if user.profile.employer %}
 {% if routes.count %}
 {% for route in routes %}
@@ -28,11 +27,12 @@
 <a href="{% url 'route_detail' route.id %}">
     <div class="card">
         <ul id="task-card" class="collection with-header">
-            <li class="collection-header teal accent-4">
+            <li class="card-header teal white-text">
                 <div class="row">
                     <span class="flow-text">
-                        <h2 class="task-card-title white-text">{{ route.name }} </h2>
+                        <h2>{{ route.name }} </h2>
                     </span>
+                </div>
             </li>
             <p class="collection-item black-text">
                 <i class="material-icons">
@@ -62,30 +62,32 @@
             </p>
             <p class="collection-item center-align">
                 <a class="waves-effect waves-light btn" href="{% url 'route_detail' route.id %}">Route Detail</a>
-                </p>
-                <p class="collection-item center-align">
+            </p>
+            <p class="collection-item center-align">
                 <img class="center-align padding-2" alt="Map not found" class="map-image" src="{{ route.imgURL }}">
             </p>
-            </div>
-        </p>
         </ul>
     </div>
 </a>
 {% endfor %}
+<!-- end for loop of rides -->
 
+<!-- Encouraging users with only one ride to add another -->
 {% if routes.count == 1 %}
 <br>
 <div class="card">
-    <div class="card-content center-align">
-        <p>You only have one ride currently added. If you wanted to add a second to round out your daily commute,
-            <a href="{% url 'route_create' %}">do so here.</a>
-        </p>
-    </div>
+    <a href="{% url 'route_create' %}">
+        <div class="card-content center-align">
+            <p>You only have one ride currently added. If you wanted to add a second to round out your daily commute, do
+                so here.
+            </p>
+        </div>
+    </a>
 </div>
 {% endif %}
 
 {% else %}
-<br><br><br>
+<br><br>
 <a href="{% url 'route_create' %}">
     <div class="card">
         <div class="card-content center-align">
@@ -99,7 +101,8 @@
 
 <!-- Encouraging users without a profile to create one -->
 {% else %}
-<h2>It looks like you don't have a profile.<a href="{% url 'profile_create' user.username %}"> Add your info.</a>
-</h2>
+<a href="{% url 'profile_create' user.username %}">
+    <h2>It looks like you don't have a profile. Add your info.</h2>
+</a>
 {% endif %}
 {% endblock %}
