@@ -23,5 +23,19 @@ You can access the application by [clicking here](https://rootrideshare.herokuap
 - [Pitch-deck](https://docs.google.com/presentation/d/1KDtMc8qAUBIrr6MkYZBnlXvgFjaKHr6-FeIQyYycH3s/edit?usp=sharing)
 
 ## Screenshots
+Landing page: 
+![Landing Page](https://i.imgur.com/YGWxqX4.png)
+
+View ride detail: 
+![Main Page](https://i.imgur.com/hNgGhZg.png)
+
+Search for rides:
+![Main Page](https://i.imgur.com/vqlwfWF.png)
+
+Mobile view:
+<p align="center"> 
+<img height="400px" src="https://i.imgur.com/sR0GXOm.png">
+</p>
+
 
 ## Next Steps
