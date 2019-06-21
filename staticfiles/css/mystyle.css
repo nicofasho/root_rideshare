@@ -1,35 +1,51 @@
+/*Sass root styling */
 body {
-  background-color: #f3f7f5;
+  background-color: #f7fdfa;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   font-family: 'Source Sans Pro', sans-serif; }
 
-p .ultra-small {
-  margin: 0px; }
+p {
+  font-size: 16px; }
+  p .ultra-small {
+    margin: 0px; }
+  p .route-info {
+    margin-left: 15px; }
+  p img {
+    border: #02423a 1px solid; }
 
-p .route-info {
-  margin-left: 15px; }
+div > a.button-collapse > i {
+  color: #A5B7A9; }
 
-div > p.ultra-small {
-  text-decoration: underline; }
+a {
+  color: #0D6142; }
+  a i {
+    color: #0D6142; }
+  a li {
+    padding: 10px; }
+  a .underline {
+    text-decoration: underline; }
 
 .card-header {
   padding: 0.5px 10px;
-  font-size: 24px; }
+  font-size: 22px; }
+
+.row img {
+  border: #02423a 1px solid; }
+
+p span.helptext {
+  display: none; }
+
+label {
+  font-size: 14px; }
 
 .col img {
-  margin-left: 50%;
-  padding: 0;
-  margin-top: 10%; }
+  padding: 0; }
 
-/* App pages  */
-:root {
-  --green: #047c48;
-  --white: #ffffff;
-  --light-yellow: #f6f7e1;
-  --lightest-yellow: #c5cc4667;
-  --black: #000; }
+.timepicker-modal {
+  top: -0% !important;
+  max-height: 100%; }
 
 .background .teal-text {
   margin-left: 10px; }
@@ -38,12 +54,22 @@ div > p.ultra-small {
   margin-left: 10px;
   margin-top: 10px; }
 
-footer.page-footer {
-  padding-top: 0;
-  background-color: var(--green); }
+/* App pages with CSS */
+:root {
+  --green: #0D6142;
+  --white: #ffffff;
+  --light-yellow: #f6f7e1;
+  --lightest-yellow: #c5cc4667;
+  --black: #000; }
 
 nav {
-  background-color: var(--green); }
+  background-color: #0D6142; }
+
+a > li > div > span > h2 {
+  margin-left: 5px; }
+
+.underline {
+  text-decoration: underline; }
 
 /* Home page */
 h1 {
@@ -53,8 +79,7 @@ h1 {
   transform: scale(1);
   transition: transform 0.5s ease, opacity 1s ease; }
 
-h1:before,
-h1:after {
+h1:before, h1:after {
   height: 2px;
   width: 100%;
   content: "";
@@ -80,8 +105,7 @@ h2 {
   transform: scale(0.9);
   opacity: 0; }
 
-.is-loading h1:before,
-.is-loading h1:after {
+.is-loading h1:before, .is-loading h1:after {
   width: 0; }
 
 #tagline {
@@ -104,7 +128,14 @@ h2 {
   align-items: center; }
 
 .card-title {
-  color: var(--green); }
+  color: #0D6142; }
+
+footer.page-footer {
+  padding-top: 0;
+  background-color: #0D6142; }
+
+.page-footer {
+  background-color: #0D6142; }
 
 .carousel-item p.white-text {
   height: 5vh;
@@ -130,6 +161,9 @@ h2 {
   position: absolute;
   right: 6%;
   top: 3%; }
+
+#join-now {
+  color: white; }
 
 #join-now:hover {
   margin-top: -6px;
@@ -173,6 +207,9 @@ h2 {
   background-position: center;
   height: 120vh; }
 
+main > div > div > div > div > form > ul > li {
+  font-size: 12px; }
+
 #signup {
   margin: 20px 90px; }
 
@@ -182,7 +219,7 @@ h2 {
 /* Index page animation */
 .animation {
   color: white;
-  background-color: var(--green);
+  background-color: #0D6142;
   position: fixed;
   height: 100vh;
   z-index: 1000 !important;

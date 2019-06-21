@@ -33,7 +33,7 @@ def home(request):
 def riders_index(request):
     curr_profile = Profile.objects.get(user=request.user)
     routes = curr_profile.route_set.all()
-    return render(request, 'riders/index.html', {'routes': routes}, )
+    return render(request, 'riders/index.html', {'routes': routes})
 
 
 def signup(request):

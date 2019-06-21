@@ -2,15 +2,13 @@
 
 {% block content %}
 
-
-<h1>Confirm Delete Page</h1>
-
+<h2>Confirm Delete</h2>
 <h4>Are you sure you want to delete <span class="teal-text">{{ object.name }}</span>?</h4>
-
+ <!-- Form to delete route-->
 <form action="" method="POST">
   {% csrf_token %}
   <input type="submit" value="Yes - Delete!" class="btn waves-effect waves-light">
-  <a href="{% url 'route_detail' route.id %}">Cancel</a>
+  <a href="{% url 'routes_index'%}">Cancel</a>
 </form>
-
+ <!-- End Form-->
 {% endblock %}
