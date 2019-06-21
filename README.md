@@ -27,15 +27,13 @@ Landing page:
 ![Landing Page](https://i.imgur.com/YGWxqX4.png)
 
 View ride detail: 
-![Main Page](https://i.imgur.com/hNgGhZg.png)
+![Details Page](https://i.imgur.com/hNgGhZg.png)
 
 Search for rides:
-![Main Page](https://i.imgur.com/vqlwfWF.png)
+![Search Page](https://i.imgur.com/Im9mvyU.png)
 
 Mobile view:
-<p align="center"> 
 <img height="400px" src="https://i.imgur.com/sR0GXOm.png">
-</p>
 
 
 ## Next Steps
