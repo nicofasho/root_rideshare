@@ -6,6 +6,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 import uuid
 import boto3
 import urllib
+import io
 
 # AMZN photo storage
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
@@ -110,6 +111,7 @@ class Route(models.Model):
 
         mapboxImg = requests.get(f"https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-a+9ed4bd({deptLocCoords[0]},{deptLocCoords[1]}),pin-s-b+000({arrLocCoords[0]},{arrLocCoords[1]}),path-5+f44-0.5({polyline})/auto/300x200?access_token={mapbox_key}")
 
+
         # line_response = requests.get(f"https://maps.googleapis.com/maps/api/directions/json?origin={self.departureLocation.name}&destination={self.arrivalLocation.name}&key={api_key}")
         # line = line_response.json()['routes'][0]['overview_polyline']['points']
 
@@ -118,11 +120,15 @@ class Route(models.Model):
         # photo_file = get photo from request
 
         # mapboxImg.content is byte content of image
-        if mapboxImg.content:
+        if mapboxImg:
+            print('mapboxImg exists')
             s3 = boto3.client('s3')
+            print('s3 exists')
             key = uuid.uuid4().hex[:6] + '.png'
+            print(f'key: {key}')
             try:
-                s3.upload_fileobj(mapboxImg.content, BUCKET, key)
+                s3.upload_fileobj(mapboxImg, BUCKET, key)
+                print('upload worked')
                 url = f"{S3_BASE_URL}{BUCKET}/{key}"
                 self.imgURL = url
             except:
